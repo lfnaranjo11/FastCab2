@@ -31,6 +31,23 @@ const MyMongoLib = function() {
           .then(resolve);
       });
     });
+  retorno.listenToChanges = () => {
+    client.connect(function(err, client) {
+      if (err !== null) {
+        throw err;
+      }
+      console.log("Connected correctly to server");
+      const db = client.db(dbName);
+      console.log("listening to changens on mongo");
+
+      // Insert a single document
+      const testCol = db.collection("pedidosReactive");
+      const csCursor = testCol.watch();
+      csCursor.on("change", data => {
+        console.log("changed", data);
+      });
+    });
+  };
   return retorno;
 };
 

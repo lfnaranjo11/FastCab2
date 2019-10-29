@@ -6,6 +6,13 @@ function App() {
   const [err, setErr] = useState("");
   const renderDocs = () => docs.map(d => <div key={d._id}>{d.msg}</div>);
   useEffect(() => {
+    const ws = new WebSocket("ws://localhost:3001");
+    ws.onopen = () => {
+      console.log("open my ws");
+      ws.onmessage = msg => {
+        console.log("got ws data", msg);
+      };
+    };
     fetch("data")
       .then(res => res.json())
       .then(data => {
