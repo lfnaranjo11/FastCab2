@@ -30,7 +30,7 @@ var server = http.createServer(app);
  */
 
 myWsLib.setUpWS(server);
-myMongoLib.listenToChanges();
+myMongoLib.listenToChanges(myWsLib.notifyAll);
 server.listen(port);
 server.on("error", onError);
 server.on("listening", onListening);
