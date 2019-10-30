@@ -14,6 +14,7 @@ const MyMongoLib = function() {
 
   exports.getDocs = () =>
     new Promise((resolve, reject) => {
+      console.log("se va a conectar al cliente");
       client.connect(function(err, client) {
         if (err !== null) {
           reject(err);
@@ -24,6 +25,7 @@ const MyMongoLib = function() {
         const db = client.db(dbName);
         // Insert a single document
         const testCol = db.collection("pedidosReactive");
+        console.log("va a pedir los docs");
         return testCol
           .find({})
           .limit(20)

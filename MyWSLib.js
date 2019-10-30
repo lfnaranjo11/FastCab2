@@ -7,7 +7,6 @@ const MyWsLib = function() {
     console.log("setting up web socket ");
     wss.on("connection", ws => {
       console.log("acepting connection");
-      //ws.send("hola");
       clients.push(ws);
     });
   };
