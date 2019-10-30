@@ -18,4 +18,12 @@ router.get("/data", (req, res) => {
     .catch(err => res.send({ err: true, msg: err }));
 });
 
+router.post("/insert", (req, res) => {
+  let body = req.body;
+  myMongoLib
+    .insertDocument(body)
+    .then(() => res.send({ msg: "Inserto" }))
+    .catch(err => res.send({ err: true, msg: err }));
+});
+
 module.exports = router;
