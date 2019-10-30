@@ -9,7 +9,7 @@ var debug = require("debug")("taxiwhatsapp:server");
 var http = require("http");
 var MyMongoLib = require("../MyMongoLib");
 const myMongoLib = MyMongoLib();
-var MyWsLib = require("../MyWsLib");
+var MyWsLib = require("../MyWSLib");
 const myWsLib = MyWsLib();
 
 /**
