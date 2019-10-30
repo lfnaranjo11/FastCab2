@@ -31,9 +31,13 @@ var server = http.createServer(app);
 
 myWsLib.setUpWS(server);
 myMongoLib.listenToChanges(myWsLib.notifyAll);
+console.log("logro hacer el listenToChanges");
 server.listen(port);
+console.log("logro hacer el listen(port)");
 server.on("error", onError);
+console.log("logro hacer el on(error)");
 server.on("listening", onListening);
+console.log("logro hacer el on(L)istening)");
 
 /**
  * Normalize a port into a number, string, or false.

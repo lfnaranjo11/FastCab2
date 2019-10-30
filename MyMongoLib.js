@@ -42,7 +42,6 @@ const MyMongoLib = function() {
 
       // Insert a single document
       const testCol = db.collection("pedidosReactive");
-      console.log("encontro la coleccion");
       const csCursor = testCol.watch();
       csCursor.on("change", data => {
         console.log("changed", data);
