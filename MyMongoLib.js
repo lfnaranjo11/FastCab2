@@ -45,7 +45,7 @@ const MyMongoLib = function() {
       const csCursor = testCol.watch();
       csCursor.on("change", data => {
         console.log("changed", data);
-        cbk(JSON.stringify(data));
+        retorno.getDocs().then(docs => cbk(JSON.stringify(docs)));
       });
     });
   };

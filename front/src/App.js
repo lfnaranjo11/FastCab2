@@ -10,7 +10,15 @@ function App() {
     ws.onopen = () => {
       console.log("open my ws");
       ws.onmessage = msg => {
-        console.log("got ws data", msg);
+        var x = [];
+
+        var x = msg.data;
+        //console.log("IS THIS", msg.data);
+        setDocs(JSON.parse(msg.data));
+        //JSON.parse(msg.data);
+        //setDocs([]);
+
+        //console.log("got ws data", msg.data);
       };
     };
     fetch("data")
