@@ -1,4 +1,4 @@
-const WebSocket = require("WS");
+const WebSocket = require("ws");
 const MyWsLib = function() {
   const MyWsLib = this || {};
   const clients = [];
