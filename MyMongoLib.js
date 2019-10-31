@@ -2,10 +2,11 @@ const MongoClient = require("mongodb").MongoClient;
 const assert = require("assert");
 
 // Connection URL
-const url = process.env.PROD_MONGODB || "mongodb://localhost:27017";
+const url =
+  process.env.PROD_MONGODB + "&w=majority" || "mongodb://localhost:27017";
 
 // Database Name
-const dbName = "reactive";
+const dbName = "taxis";
 
 const MyMongoLib = function() {
   const exports = this || {};
@@ -24,8 +25,7 @@ const MyMongoLib = function() {
         console.log("Connected correctly to server");
         const db = client.db(dbName);
         // Insert a single document
-        const testCol = db.collection("pedidosReactive");
-        console.log("va a pedir los docs");
+        const testCol = db.collection("viajes");
         return testCol
           .find({})
           .limit(20)
@@ -43,7 +43,7 @@ const MyMongoLib = function() {
       console.log("listening to changens on mongo");
 
       // Insert a single document
-      const testCol = db.collection("pedidosReactive");
+      const testCol = db.collection("viajes");
       const csCursor = testCol.watch();
       csCursor.on("change", data => {
         console.log("changed", data);
@@ -62,7 +62,7 @@ const MyMongoLib = function() {
         }
         const db = client.db(dbName);
         // Insert a single document
-        const testCol = db.collection("pedidosReactive");
+        const testCol = db.collection("viajes");
         let promise2 = testCol.insertOne(item);
         promise2.then(res => resolve(res));
         promise2.catch(err => reject(err));
