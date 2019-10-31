@@ -33,6 +33,7 @@ const MyMongoLib = function() {
           .then(resolve);
       });
     });
+
   exports.listenToChanges = cbk => {
     client.connect(function(err, client) {
       if (err !== null) {
