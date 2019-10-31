@@ -2,8 +2,12 @@ const MongoClient = require("mongodb").MongoClient;
 const assert = require("assert");
 
 // Connection URL
-const url =
-  process.env.PROD_MONGODB + "&w=majority" || "mongodb://localhost:27017";
+let url = "";
+if (process.env.PROD_MONGODB) {
+  url = process.env.PROD_MONGODB + "&w=majority";
+} else {
+  url = "mongodb://localhost:27017";
+}
 
 // Database Name
 const dbName = "taxis";

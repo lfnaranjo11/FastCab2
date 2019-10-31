@@ -7,18 +7,15 @@ function App() {
   const renderDocs = () => docs.map(d => <div key={d._id}>{d.msg}</div>);
   useEffect(() => {
     const ws = new WebSocket("wss://taxis-whatsapp.herokuapp.com");
+    //const ws = new WebSocket("ws://localhost:3001");
+
     ws.onopen = () => {
       console.log("open my ws");
       ws.onmessage = msg => {
         var x = [];
 
         var x = msg.data;
-        //console.log("IS THIS", msg.data);
         setDocs(JSON.parse(msg.data));
-        //JSON.parse(msg.data);
-        //setDocs([]);
-
-        //console.log("got ws data", msg.data);
       };
     };
     fetch("data")
