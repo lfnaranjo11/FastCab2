@@ -4,7 +4,7 @@ const MessagingResponse = require("twilio").twiml.MessagingResponse;
 
 router.post("/newmessage", (req, res) => {
   const twiml = new MessagingResponse();
-  twiml.message(req.json());
+  twiml.message(JSON.stringify(req.body));
   res.writeHead(200, { "Content-Type": "text/xml" });
   res.end(twiml.toString());
 });
