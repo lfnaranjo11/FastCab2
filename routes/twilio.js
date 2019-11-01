@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var MyWaLib = require("../MyWaLib");
-const MessagingResponse = require("twilio").twiml.MessagingResponse;
+const myWaLib = MyWaLib();
 
 router.post("/newmessage", (req, res) => {
   const newMessage = req.body.Body;
@@ -11,7 +11,7 @@ router.post("/newmessage", (req, res) => {
   res.writeHead(200, { "Content-Type": "text/xml" });
   res.end(twiml.toString());
   */
-  MyWaLib.receiveMessage(newMessage);
+  myWaLib.receiveMessage(newMessage);
 });
 
 module.exports = router;
