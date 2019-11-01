@@ -7,11 +7,11 @@ const myMongoLib = MyMongoLib();
 
 router.post("/newmessage", (req, res) => {
   const newMessage = req.body.Body;
-  myWaLib.receiveMessage(newMessage, res);
   myMongoLib
     .insertDocument(newMessage)
-    .then(() => res.send({ msg: "Inserto" }))
-    .catch(err => res.send({ err: true, msg: err }));
+    .then(() => console.log(newMesage))
+    .catch(err => console.log(failedToPersistMessage));
+  myWaLib.receiveMessage(newMessage, res);
 });
 
 module.exports = router;
