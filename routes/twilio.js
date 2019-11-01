@@ -5,13 +5,19 @@ var MyMongoLib = require("../MyMongoLib");
 const myWaLib = MyWaLib();
 const myMongoLib = MyMongoLib();
 
+let status = 0;
+
 router.post("/newmessage", (req, res) => {
   const newMessage = req.body.Body;
   myMongoLib
     .insertDocument({ msg: newMessage })
-    .then(() => console.log(newMesage))
+    .then(() => (status = status + 1))
     .catch(err => console.log(err));
-  myWaLib.receiveMessage(newMessage, res);
+  if (status === 0) {
+    myWaLib.receiveMessage(newMessage, res);
+  } else if (status === 1) {
+    myWaLib.receiveMessage("coloque su direccion", res);
+  }
 });
 
 module.exports = router;
