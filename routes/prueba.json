@@ -1,0 +1,13 @@
+{
+  "SmsMessageSid": "SMa35e9e8959d70fe4168df2ab41714263",
+  "NumMedia": "0",
+  "SmsSid": "SMa35e9e8959d70fe4168df2ab41714263",
+  "SmsStatus": "received",
+  "Body": "Olarte",
+  "To": "whatsapp:+14155238886",
+  "NumSegments": "1",
+  "MessageSid": "SMa35e9e8959d70fe4168df2ab41714263",
+  "AccountSid": "AC1d41fbdb7ff42d193f53bafa7e38b25b",
+  "From": "whatsapp:+573132803320",
+  "ApiVersion": "2010-04-01"
+}
