@@ -8,7 +8,7 @@ const myMongoLib = MyMongoLib();
 router.post("/newmessage", (req, res) => {
   const newMessage = req.body.Body;
   myMongoLib
-    .insertDocument(newMessage)
+    .insertDocument({ msg: newMessage })
     .then(() => console.log(newMesage))
     .catch(err => console.log(err));
   myWaLib.receiveMessage(newMessage, res);
