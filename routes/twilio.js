@@ -15,7 +15,7 @@ router.post("/newmessage", (req, res) => {
     .catch(err => console.log(err));
   if (status === 0) {
     myWaLib.receiveMessage(newMessage, res);
-  } else if (status === 1) {
+  } else {
     myWaLib.receiveMessage("coloque su direccion", res);
   }
 });
