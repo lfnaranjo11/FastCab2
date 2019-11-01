@@ -4,10 +4,9 @@ const MessagingResponse = require("twilio").twiml.MessagingResponse;
 
 router.post("/newmessage", (req, res) => {
   const twiml = new MessagingResponse();
-  twiml.message("Buenaaas");
+  twiml.message(twiml.toString());
   res.writeHead(200, { "Content-Type": "text/xml" });
   res.end(twiml.toString());
-  res.send("OK");
 });
 
 module.exports = router;
