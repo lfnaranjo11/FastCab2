@@ -1,13 +1,15 @@
 {
-  "SmsMessageSid": "SMa35e9e8959d70fe4168df2ab41714263",
-  "NumMedia": "0",
-  "SmsSid": "SMa35e9e8959d70fe4168df2ab41714263",
+  "MediaContentType0": "application/pdf",
+  "SmsMessageSid": "MM4e99dd0a2077b971cd2942234928ad37",
+  "NumMedia": "1",
+  "SmsSid": "MM4e99dd0a2077b971cd2942234928ad37",
   "SmsStatus": "received",
-  "Body": "Olarte",
+  "Body": "PENSUM.pdf",
   "To": "whatsapp:+14155238886",
   "NumSegments": "1",
-  "MessageSid": "SMa35e9e8959d70fe4168df2ab41714263",
+  "MessageSid": "MM4e99dd0a2077b971cd2942234928ad37",
   "AccountSid": "AC1d41fbdb7ff42d193f53bafa7e38b25b",
   "From": "whatsapp:+573132803320",
+  "MediaUrl0": "https://api.twilio.com/2010-04-01/Accounts/AC1d41fbdb7ff42d193f53bafa7e38b25b/Messages/MM4e99dd0a2077b971cd2942234928ad37/Media/MEf01661c8416202068338c929e2f58601",
   "ApiVersion": "2010-04-01"
 }
