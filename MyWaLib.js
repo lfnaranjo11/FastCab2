@@ -15,9 +15,9 @@ const MyWaLib = function() {
       .then(message => console.log(message.sid));
   };
 
-  MyWaLib.receiveMessage = (newMessage, res) => {
+  MyWaLib.receiveMessage = (respuesta, res) => {
     const twiml = new MessagingResponse();
-    twiml.message("Bienvenido " + newMessage);
+    twiml.message(respuesta);
     res.writeHead(200, { "Content-Type": "text/xml" });
     res.end(twiml.toString());
   };
