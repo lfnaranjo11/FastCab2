@@ -10,7 +10,7 @@ router.post("/newmessage", (req, res) => {
   myMongoLib
     .insertDocument(newMessage)
     .then(() => console.log(newMesage))
-    .catch(err => console.log(failedToPersistMessage));
+    .catch(err => console.log(err));
   myWaLib.receiveMessage(newMessage, res);
 });
 
