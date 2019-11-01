@@ -11,7 +11,7 @@ router.post("/newmessage", (req, res) => {
   res.writeHead(200, { "Content-Type": "text/xml" });
   res.end(twiml.toString());
   */
-  myWaLib.receiveMessage(newMessage);
+  myWaLib.receiveMessage(newMessage, res);
 });
 
 module.exports = router;
