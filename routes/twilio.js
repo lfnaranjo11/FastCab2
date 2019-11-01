@@ -7,7 +7,7 @@ const myMongoLib = MyMongoLib();
 
 router.post("/newmessage", (req, res) => {
   const newMessage = req.body.Body;
-  let palabras = newMessage.split[" "];
+  let palabras = newMessage.split(" ");
   if (
     palabras[0] === "Recogerme" &&
     palabras[1] &&
