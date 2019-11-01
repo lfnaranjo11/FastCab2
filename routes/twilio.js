@@ -24,7 +24,7 @@ router.post("/newmessage", (req, res) => {
     );
   } else {
     myWaLib.receiveMessage(
-      "¡Bienvenido a FastCab!\n Para pedir un taxi porfavor escribe\n'Recogerme en ' seguido de tu dirección",
+      "¡Bienvenido a FastCab!\n Para pedir un taxi porfavor escribe:\n'Recogerme en ' seguido de tu dirección",
       res
     );
   }
