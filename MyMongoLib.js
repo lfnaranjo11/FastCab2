@@ -91,7 +91,6 @@ const MyMongoLib = function() {
             if (err) {
               reject(res);
             }
-            client.close();
             resolve(res);
           }
         );

@@ -6,7 +6,7 @@ const myWaLib = MyWaLib();
 const myMongoLib = MyMongoLib();
 
 router.post("/accept", (req, res) => {
-  let viaje = req.viaje;
+  let viaje = req.body.viaje;
   myMongoLib
     .acceptViaje(viaje)
     .then(res.send("ok"))
