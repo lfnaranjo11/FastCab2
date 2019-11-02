@@ -6,8 +6,8 @@ function App() {
   const [err, setErr] = useState("");
   const renderDocs = () => docs.map(d => <div key={d._id}>{d.direccion}</div>);
   useEffect(() => {
-    //const ws = new WebSocket("wss://taxis-whatsapp.herokuapp.com");
-    const ws = new WebSocket("ws://localhost:3001");
+    const ws = new WebSocket("wss://taxis-whatsapp.herokuapp.com");
+    //const ws = new WebSocket("ws://localhost:3001");
 
     ws.onopen = () => {
       console.log("open my ws");
