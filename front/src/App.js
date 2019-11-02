@@ -22,7 +22,7 @@ function App() {
       .then(res => res.json())
       .then(data => {
         if (data.err) {
-          setErr(JSON.stringify(data.msg));
+          setErr(JSON.stringify(data.err));
         } else {
           setDocs(data);
         }
