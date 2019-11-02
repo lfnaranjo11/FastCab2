@@ -6,6 +6,7 @@ var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+var taxistas = require("./routes/taxistas");
 var wa = require("./routes/twilio");
 
 var app = express();
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, "front/build")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/taxistas", taxistas);
 app.use("/wa", wa);
 
 // catch 404 and forward to error handler
