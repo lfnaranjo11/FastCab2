@@ -5,6 +5,8 @@ var MyMongoLib = require("../MyMongoLib");
 const myWaLib = MyWaLib();
 const myMongoLib = MyMongoLib();
 
+let clientesEnEspera = {};
+
 router.post("/newmessage", (req, res) => {
   const newMessage = req.body.Body;
   let palabras = newMessage.split(" ");
@@ -14,8 +16,14 @@ router.post("/newmessage", (req, res) => {
     palabras[1] === "en" &&
     palabras[2]
   ) {
+    let direccion = palabras[2];
+
+    for (i = 3; i < palabras.length; i++) {
+      direccion = direccion + palabras[i];
+    }
+
     myMongoLib
-      .insertDocument({ msg: palabras[2] })
+      .insertDocument({ msg: direccion })
       .then(console.log("nuevo pedido"))
       .catch(err => console.log(err));
     myWaLib.receiveMessage(
