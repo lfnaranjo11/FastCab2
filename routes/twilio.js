@@ -57,7 +57,7 @@ router.post("/newmessage", (req, res) => {
       `*¡Bienvenido a FastCab!*
 
 Para pedir un taxi porfavor escribe:
-*Recogerme en *seguido de tu dirección`,
+*Recogerme en* seguido de tu dirección`,
       res
     );
   }
