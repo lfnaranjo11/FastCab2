@@ -48,12 +48,16 @@ router.post("/newmessage", (req, res) => {
   } else if (clientesEnEspera[usuario] && newMessage.toLowerCase() === "no") {
     clientesEnEspera[usuario].timestamp = new Date().getMilliseconds();
     myWaLib.respondToMessage(
-      "Vuelve a ingresar la dirección, escribe:\n'Recogerme en ' seguido de tu dirección",
+      `Vuelve a ingresar la dirección, escribe:
+'Recogerme en ' seguido de tu dirección`,
       res
     );
   } else {
     myWaLib.respondToMessage(
-      "¡Bienvenido a FastCab!\n Para pedir un taxi porfavor escribe:\n'Recogerme en ' seguido de tu dirección",
+      `¡Bienvenido a FastCab!
+
+Para pedir un taxi porfavor escribe:
+'Recogerme en ' seguido de tu dirección`,
       res
     );
   }
