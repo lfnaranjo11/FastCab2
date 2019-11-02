@@ -22,24 +22,27 @@ router.post("/newmessage", (req, res) => {
     for (i = 3; i < palabras.length; i++) {
       direccion = direccion + " " + palabras[i];
     }
-    clientesEnEspera[usuario] = new Date().getMilliseconds();
+    clientesEnEspera[usuario] = {
+      timestamp: new Date().getMilliseconds(),
+      direccion: direccion
+    };
 
     myWaLib.respondToMessage(
       "¿La dirección en la que quieres que te recojan es " + direccion + "?",
       res
     );
   } else if (clientesEnEspera[usuario] && newMessage.toLowerCase() === "si") {
-    delete clientesEnEspera[usuario];
     myMongoLib
-      .insertDocument({ msg: direccion })
+      .insertDocument({ msg: clientesEnEspera[usuario].direccion })
       .then(console.log("nuevo pedido"))
       .catch(err => console.log(err));
+    delete clientesEnEspera[usuario];
     myWaLib.respondToMessage(
       "Estamos buscando conductores disponibles, te avisaremos cuando nos confirmen",
       res
     );
   } else if (clientesEnEspera[usuario] && newMessage.toLowerCase() === "no") {
-    clientesEnEspera[usuario] = new Date().getMilliseconds();
+    clientesEnEspera[usuario].timestamp = new Date().getMilliseconds();
     myWaLib.respondToMessage(
       "Vuelve a ingresar la dirección, escribe:\n'Recogerme en ' seguido de tu dirección",
       res
