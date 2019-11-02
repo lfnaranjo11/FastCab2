@@ -7,7 +7,7 @@ const myMongoLib = MyMongoLib();
 
 router.post("/accept", (req, res) => {
   let viaje = req.body.viaje;
-  let conductor = req.body.consuctor;
+  let conductor = req.body.conductor;
   myWaLib.sendMessage(
     `!Tu viaje hacia ${viaje.direccion} ha sido confirmado!
     Tu conductor se llama ${conductor.nombre}.
