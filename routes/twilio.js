@@ -54,5 +54,4 @@ router.post("/newmessage", (req, res) => {
     );
   }
 });
-
 module.exports = router;

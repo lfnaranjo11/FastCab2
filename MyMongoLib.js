@@ -67,9 +67,9 @@ const MyMongoLib = function() {
         const db = client.db(dbName);
         // Insert a single document
         const testCol = db.collection("viajes");
-        let promise2 = testCol.insertOne(item);
-        promise2.then(res => resolve(res));
-        promise2.catch(err => reject(err));
+        let promise = testCol.insertOne(item);
+        promise.then(res => resolve(res));
+        promise.catch(err => reject(err));
       });
     });
   };
@@ -84,16 +84,12 @@ const MyMongoLib = function() {
         const db = client.db(dbName);
         const testCol = db.collection("viajes");
         let o_id = new ObjectID(viaje._id);
-        testCol.updateOne(
+        let promise = testCol.updateOne(
           { _id: o_id },
-          { $set: { estado: "en curso" } },
-          (err, res) => {
-            if (err) {
-              reject(res);
-            }
-            resolve(res);
-          }
+          { $set: { estado: "en curso" } }
         );
+        promise.then(res => resolve(res));
+        promise.catch(err => reject(err));
       });
     });
   };
