@@ -7,11 +7,11 @@ const myMongoLib = MyMongoLib();
 
 router.post("/accept", (req, res) => {
   let viaje = req.body.viaje;
+  myWaLib.sendMessage("!Viaje Confirmado!", viaje.usuario);
   myMongoLib
     .acceptViaje(viaje)
     .then(res.send("ok"))
     .catch(res.send(err));
-  myWaLib.sendMessage("!Viaje Confirmado!", viaje.usuario);
 });
 
 module.exports = router;
