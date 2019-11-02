@@ -4,7 +4,7 @@ import "./App.css";
 function App() {
   const [docs, setDocs] = useState([]);
   const [err, setErr] = useState("");
-  const renderDocs = () => docs.map(d => <div key={d._id}>{d.msg}</div>);
+  const renderDocs = () => docs.map(d => <div key={d._id}>{d.direccion}</div>);
   useEffect(() => {
     //const ws = new WebSocket("wss://taxis-whatsapp.herokuapp.com");
     const ws = new WebSocket("ws://localhost:3001");
@@ -21,7 +21,6 @@ function App() {
     fetch("data")
       .then(res => res.json())
       .then(data => {
-        console.log("got data", data);
         if (data.err) {
           setErr(JSON.stringify(data.msg));
         } else {

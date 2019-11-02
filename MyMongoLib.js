@@ -31,8 +31,7 @@ const MyMongoLib = function() {
         // Insert a single document
         const testCol = db.collection("viajes");
         return testCol
-          .find({})
-          .limit(20)
+          .find({ estado: "en espera" })
           .toArray()
           .then(resolve);
       });
@@ -74,6 +73,32 @@ const MyMongoLib = function() {
       });
     });
   };
+
+  exports.acceptViaje = viaje => {
+    return new Promise((resolve, reject) => {
+      client.connect(function(err, client) {
+        if (err !== null) {
+          reject(err);
+          return;
+        }
+        const db = client.db(dbName);
+        const testCol = db.collection("viajes");
+        let o_id = new ObjectID(viaje._id);
+        testCol.updateOne(
+          { _id: o_id },
+          { $set: { estado: "en curso" } },
+          (err, res) => {
+            if (err) {
+              reject(res);
+            }
+            client.close();
+            resolve(res);
+          }
+        );
+      });
+    });
+  };
+
   return exports;
 };
 

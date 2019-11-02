@@ -33,7 +33,7 @@ router.post("/newmessage", (req, res) => {
     );
   } else if (clientesEnEspera[usuario] && newMessage.toLowerCase() === "si") {
     myMongoLib
-      .insertDocument({ msg: clientesEnEspera[usuario].direccion })
+      .insertDocument({ direccion: clientesEnEspera[usuario].direccion })
       .then(console.log("nuevo pedido"))
       .catch(err => console.log(err));
     delete clientesEnEspera[usuario];
