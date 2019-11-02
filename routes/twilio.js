@@ -28,7 +28,7 @@ router.post("/newmessage", (req, res) => {
     };
 
     myWaLib.respondToMessage(
-      "¿La dirección en la que quieres que te recojan es " + direccion + "?",
+      "¿La dirección en la que quieres que te recojan es *" + direccion + "*?",
       res
     );
   } else if (clientesEnEspera[usuario] && newMessage.toLowerCase() === "si") {
@@ -49,15 +49,15 @@ router.post("/newmessage", (req, res) => {
     clientesEnEspera[usuario].timestamp = new Date().getMilliseconds();
     myWaLib.respondToMessage(
       `Vuelve a ingresar la dirección, escribe:
-'Recogerme en ' seguido de tu dirección`,
+*Recogerme en* seguido de tu dirección`,
       res
     );
   } else {
     myWaLib.respondToMessage(
-      `¡Bienvenido a FastCab!
+      `*¡Bienvenido a FastCab!*
 
 Para pedir un taxi porfavor escribe:
-'Recogerme en ' seguido de tu dirección`,
+*Recogerme en *seguido de tu dirección`,
       res
     );
   }
