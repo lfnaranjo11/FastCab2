@@ -39,7 +39,7 @@ router.post("/newmessage", (req, res) => {
       res
     );
   } else if (clientesEnEspera[usuario] && newMessage.toLowerCase() === "no") {
-    delete clientesEnEspera[usuario];
+    clientesEnEspera[usuario] = new Date().getMilliseconds();
     myWaLib.respondToMessage(
       "Vuelve a ingresar la dirección, escribe:\n'Recogerme en ' seguido de tu dirección",
       res
