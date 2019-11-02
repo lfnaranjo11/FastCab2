@@ -12,3 +12,5 @@ router.post("/accept", (req, res) => {
     .then(res.send("ok"))
     .catch(res.send(err));
 });
+
+module.exports = router;
