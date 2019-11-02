@@ -5,12 +5,12 @@ const MessagingResponse = require("twilio").twiml.MessagingResponse;
 
 const MyWaLib = function() {
   const MyWaLib = this || {};
-  MyWaLib.sendMessage = () => {
+  MyWaLib.sendMessage = (mensaje, usuario) => {
     client.messages
       .create({
         from: "whatsapp:+14155238886",
-        body: "Hello pato",
-        to: "whatsapp:+573004654173"
+        body: mensaje,
+        to: usuario
       })
       .then(message => console.log(message.sid));
   };

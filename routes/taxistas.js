@@ -11,6 +11,7 @@ router.post("/accept", (req, res) => {
     .acceptViaje(viaje)
     .then(res.send("ok"))
     .catch(res.send(err));
+  myWaLib.sendMessage("!Viaje Confirmado!", viaje.usuario);
 });
 
 module.exports = router;
