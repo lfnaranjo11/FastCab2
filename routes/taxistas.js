@@ -10,7 +10,7 @@ router.post("/accept", (req, res) => {
   let conductor = req.body.consuctor;
   myWaLib.sendMessage(
     `!Tu viaje hacia ${viaje.direccion} ha sido confirmado!
-    Tu conductor se llama ${conductos.nombre}.
+    Tu conductor se llama ${conductor.nombre}.
     A continuación encontrarás su información:
     Cedula: ${conductor.cedula}
     Placa del carro: ${conductor.placa}
