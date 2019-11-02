@@ -9,13 +9,12 @@ router.post("/accept", (req, res) => {
   let viaje = req.body.viaje;
   let conductor = req.body.conductor;
   myWaLib.sendMessage(
-    `!Tu viaje hacia ${viaje.direccion} ha sido confirmado!
-    Tu conductor se llama ${conductor.nombre}.
-    A continuación encontrarás su información:
-    Cedula: ${conductor.cedula}
-    Placa del carro: ${conductor.placa}
-    Modelo del carro: ${conductor.carro}
-    `,
+    `¡Tu viaje hacia ${viaje.direccion} ha sido confirmado!
+Tu conductor se llama ${conductor.nombre}.
+A continuación encontrarás su información:
+Cedula: ${conductor.cedula}
+Placa del carro: ${conductor.placa}
+Modelo del carro: ${conductor.carro}`,
     viaje.usuario
   );
   myMongoLib
