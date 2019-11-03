@@ -28,4 +28,18 @@ router.post("/create", (req, res) => {
     .catch(err => res.send({ err: err, msg: "error al hacer el hash" }));
 });
 
+router.post("/login", (req, res) => {
+  let usuario = req.body.usuario;
+  let contraseña = req.body.contraseña;
+  myMongoLib
+    .findUser({
+      usuario: usuario,
+      contraseña: contraseña
+    })
+    .then(usuario => {
+      res.send(usuario);
+    })
+    .catch(err => res.send({ err: err, msg: "error al buscar el usuario" }));
+});
+
 module.exports = router;
