@@ -1,9 +1,21 @@
 const express = require("express");
 const argon2 = require("argon2");
+const jwt = require("jsonwebtoken");
 const randomBytes = require("randombytes");
 const router = express.Router();
 const MyMongoLib = require("../MyMongoLib");
 const myMongoLib = MyMongoLib();
+
+let generateToken = user => {
+  const data = {
+    _id: user._id,
+    name: user.usuario
+  };
+  const signature = "proyectoWeb4";
+  const expiration = "6h";
+
+  return jwt.sign({ data }, signature, { expiresIn: expiration });
+};
 
 router.post("/create", (req, res) => {
   let usuario = req.body.usuario;
@@ -40,7 +52,11 @@ router.post("/login", (req, res) => {
       argon2
         .verify(userRecord.contraseña, contraseña)
         .then(argon2Match => {
-          res.send(argon2Match);
+          if (!argon2Match) {
+            res.send("Credenciales invalidas");
+          }
+          let token = generateToken(userRecord);
+          res.send(token);
         })
         .catch(err => res.send({ err: err, msg: "contraseña incorrect" }));
     })
