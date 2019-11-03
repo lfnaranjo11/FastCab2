@@ -166,9 +166,11 @@ const MyMongoLib = function() {
         const db = client.db(dbName);
         // Insert a single document
         const testCol = db.collection("usuarios");
-        return testCol
+        testCol
           .insertOne(item)
-          .then(resolve)
+          .then(() => {
+            return item;
+          })
           .catch(err => reject(err));
       });
     });
