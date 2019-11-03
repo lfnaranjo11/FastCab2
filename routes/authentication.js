@@ -38,13 +38,14 @@ router.post("/login", (req, res) => {
     })
     .then(userRecord => {
       argon2;
-      res
-        .send({ msg: userRecord.constraseña })
+      res.send({ msg: userRecord.constraseña });
+      /**
         .verify(userRecord.constraseña, contraseña)
         .then(argon2Match => {
           res.send(argon2Match);
         })
         .catch(error => res.send(error));
+        */
     })
     .catch(err =>
       res.send({ err: err, msg: `El usuario ${usuario} no existe` })
