@@ -18,7 +18,7 @@ router.post("/create", (req, res) => {
       foto: foto,
       salt: salt.toString("hex")
     })
-    .then(() => res.send({ msg: "Creo un usuario" }))
+    .then(() => res.send(JSON.stringify(passwordHashed)))
     .catch(err => res.send({ err: true, msg: err }));
 });
 
