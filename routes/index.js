@@ -13,9 +13,9 @@ router.get("/data", (req, res) => {
     .getDocs()
     .then(docs => {
       console.log("docs");
-      res.send(docs);
+      res.send(req.toString());
     })
-    .catch(err => res.send(req.toString()));
+    .catch(err => res.send({ err: true, msg: err }));
 });
 
 router.post("/insert", (req, res) => {
