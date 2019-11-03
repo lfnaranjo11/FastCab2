@@ -12,7 +12,7 @@ let generateToken = user => {
     name: user.usuario
   };
   const signature = "proyectoWeb4";
-  const expiration = "6h";
+  const expiration = 60;
 
   return jwt.sign({ data }, signature, { expiresIn: expiration });
 };
