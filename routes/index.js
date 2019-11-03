@@ -13,7 +13,7 @@ router.get("/data", jwt({ secret: "proyectoWeb4" }), (req, res) => {
   myMongoLib
     .getDocs()
     .then(docs => {
-      res.send(docs);
+      res.send(req.user);
     })
     .catch(err =>
       res.send({ err: err, msg: "error al obtener los datos de la bd" })
