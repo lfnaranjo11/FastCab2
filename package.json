@@ -18,6 +18,7 @@
     "mongodb": "^3.3.3",
     "morgan": "~1.9.1",
     "prettier": "^1.18.2",
+    "randombytes": "^2.1.0",
     "twilio": "^3.37.0",
     "ws": "^7.2.0"
   }

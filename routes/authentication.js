@@ -1,7 +1,8 @@
-var express = require("express");
+const express = require("express");
 const argon2 = require("argon2");
-var router = express.Router();
-var MyMongoLib = require("../MyMongoLib");
+const randomBytes = require("randombytes");
+const router = express.Router();
+const MyMongoLib = require("../MyMongoLib");
 const myMongoLib = MyMongoLib();
 
 router.post("/create", (req, res) => {
