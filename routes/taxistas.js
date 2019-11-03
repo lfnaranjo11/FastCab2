@@ -31,7 +31,7 @@ router.post("/llegue", (req, res) => {
     `*¡Tu conductor ha llegado!*
 
 Por favor ve al punto de encuentro`,
-    viaje.usuario
+    viaje.numero
   );
   myMongoLib
     .llegue(viaje)
@@ -46,7 +46,7 @@ router.post("/recoger", (req, res) => {
     `*Vas en el taxi correcto*
 
 ¡Buen viaje!`,
-    viaje.usuario
+    viaje.numero
   );
   myMongoLib
     .recoger(viaje)
@@ -61,7 +61,7 @@ router.post("/terminar", (req, res) => {
     `*Viaje Terminado*
 
 ¡Gracias por usar FastCab!`,
-    viaje.usuario
+    viaje.numero
   );
   myMongoLib
     .terminar(viaje)
@@ -76,7 +76,7 @@ router.post("/cancelar", (req, res) => {
     `*Viaje Cancelado*
 
 El taxista a cancelado tu viaje`,
-    viaje.usuario
+    viaje.numero
   );
   myMongoLib
     .terminar(viaje)

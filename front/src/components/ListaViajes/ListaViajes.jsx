@@ -22,7 +22,7 @@ function ListaViajes(props) {
     })
       .then(res => console.log("Exito", res))
       .catch(error => console.log("Error:", error));
-
+    viaje.estado = "confirmado";
     props.history.push({
       pathname: "/servicio",
       viaje: viaje
