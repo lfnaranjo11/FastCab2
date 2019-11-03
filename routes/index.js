@@ -10,10 +10,11 @@ router.get("/", function(req, res, next) {
 });
 
 router.get("/data", jwt({ secret: "proyectoWeb4" }), (req, res) => {
+  let user = req.user.data;
   myMongoLib
     .getDocs()
     .then(docs => {
-      res.send(req.user);
+      res.send(user);
     })
     .catch(err =>
       res.send({ err: err, msg: "error al obtener los datos de la bd" })
