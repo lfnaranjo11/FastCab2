@@ -37,7 +37,8 @@ router.post("/login", (req, res) => {
       contraseña: contraseña
     })
     .then(userRecord => {
-      res.send(argon2.verify(userRecord.constraseña, constraseña).toString());
+      const correctPassword = await argon2.verify(userRecord.password, password);
+      res.send(correctPassword);
     })
     .catch(err =>
       res.send({ err: err, msg: `El usuario ${usuario} no existe` })
