@@ -11,7 +11,7 @@ router.post("/create", (req, res) => {
   let foto = req.body.foto;
   const salt = randomBytes(32);
   argon2
-    .hash(contraseña, { salt })
+    .hash(contraseña)
     .then(hash => {
       myMongoLib
         .createUser({
@@ -38,10 +38,7 @@ router.post("/login", (req, res) => {
     })
     .then(userRecord => {
       argon2
-        .verify(
-          "1$q6qAjPTQYf3oe2bz7XjaoupNrSEG4UVZuKHJ3QSNIi0$6s8+96j/tyyGqMIsoe/QMU/plg4mWcA1z3FWeNSe6o0",
-          "12345"
-        )
+        .verify(userRecord.constraseña, contraseña)
         .then(argon2Match => {
           res.send(argon2Match);
         })
