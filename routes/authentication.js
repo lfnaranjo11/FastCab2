@@ -20,10 +20,12 @@ router.post("/create", (req, res) => {
           foto: foto,
           salt: salt.toString("hex")
         })
-        .then(() => res.send(JSON.stringify(passwordHashed)))
-        .catch(err => res.send({ err: true, msg: err }));
+        .then(() => res.send("Creo al usuario"))
+        .catch(err =>
+          res.send({ err: err, msg: "error al insertar en la bd" })
+        );
     })
-    .catch(err => res.send({ err: true, msg: err }));
+    .catch(err => res.send({ err: err, msg: "error al hacer el hash" }));
 });
 
 module.exports = router;
