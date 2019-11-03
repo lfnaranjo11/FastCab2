@@ -20,3 +20,5 @@ router.post("/create", (req, res) => {
     .then(() => res.send({ msg: "Creo un usuario" }))
     .catch(err => res.send({ err: true, msg: err }));
 });
+
+module.exports = router;
