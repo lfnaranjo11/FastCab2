@@ -9,7 +9,7 @@ const myMongoLib = MyMongoLib();
 let generateToken = user => {
   const data = {
     _id: user._id,
-    name: user.usuario
+    usuario: user.usuario
   };
   const signature = process.env.SECRET;
   const expiration = "8h";
@@ -19,8 +19,11 @@ let generateToken = user => {
 
 router.post("/create", (req, res) => {
   let usuario = req.body.usuario;
-  let contraseña = req.body.contraseña;
+  let cedula = req.body.cedula;
+  let placa = req.body.placa;
+  let modelo = req.body.modelo;
   let foto = req.body.foto;
+  let contraseña = req.body.contraseña;
   const salt = randomBytes(32);
   argon2
     .hash(contraseña, { salt })
@@ -28,8 +31,11 @@ router.post("/create", (req, res) => {
       myMongoLib
         .createUser({
           usuario: usuario,
-          contraseña: hash,
+          cedula: cedula,
+          placa: placa,
+          modelo: modelo,
           foto: foto,
+          contraseña: hash,
           salt: salt.toString("hex")
         })
         .then(() => res.send("Creo al usuario"))
@@ -56,7 +62,14 @@ router.post("/login", (req, res) => {
             res.send("Credenciales invalidas");
           }
           let token = generateToken(userRecord);
-          res.send(token);
+          let usuarioSimple = {
+            usuario: userRecord.usuario,
+            cedula: userRecord.cedula,
+            placa: userRecord.placa,
+            modelo: userRecord.modelo,
+            foto: userRecord.foto
+          };
+          res.send({ token: token, usuario: usuarioSimple });
         })
         .catch(err => res.send({ err: err, msg: "contraseña incorrect" }));
     })
