@@ -29,7 +29,6 @@ router.post("/llegue", (req, res) => {
   let conductor = req.body.conductor;
   myWaLib.sendMessage(
     `*¡Tu conductor ha llegado!*
-
 Por favor ve al punto de encuentro`,
     viaje.numero
   );
@@ -44,7 +43,6 @@ router.post("/recoger", (req, res) => {
   let conductor = req.body.conductor;
   myWaLib.sendMessage(
     `*Vas en el taxi correcto*
-
 ¡Buen viaje!`,
     viaje.numero
   );
@@ -59,7 +57,6 @@ router.post("/terminar", (req, res) => {
   let conductor = req.body.conductor;
   myWaLib.sendMessage(
     `*Viaje Terminado*
-
 ¡Gracias por usar FastCab!`,
     viaje.numero
   );
@@ -74,7 +71,6 @@ router.post("/cancelar", (req, res) => {
   let conductor = req.body.conductor;
   myWaLib.sendMessage(
     `*Viaje Cancelado*
-
 El taxista a cancelado tu viaje`,
     viaje.numero
   );
