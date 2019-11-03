@@ -31,12 +31,16 @@ function ListaViajes(props) {
   }, []);
 
   let handleAccept = viaje => {
+    let bod = JSON.stringify({
+      viaje: viaje,
+      conductor: props.location.user
+    });
+
+    console.log(bod);
+
     fetch("taxistas/accept", {
       method: "POST", // or 'PUT'
-      body: JSON.stringify({
-        viaje: viaje,
-        conductor: JSON.stringify(props.location.user)
-      }),
+      body: bod,
       headers: {
         "Content-Type": "application/json"
       }
@@ -46,7 +50,8 @@ function ListaViajes(props) {
     viaje.estado = "confirmado";
     props.history.push({
       pathname: "/servicio",
-      viaje: viaje
+      viaje: viaje,
+      conductor: props.location.user
     });
   };
 
