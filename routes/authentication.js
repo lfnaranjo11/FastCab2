@@ -25,6 +25,13 @@ router.post("/create", (req, res) => {
   let foto = req.body.foto;
   let contraseña = req.body.contraseña;
   const salt = randomBytes(32);
+  let newUser = {
+    usuario: usuario,
+    cedula: cedula,
+    placa: placa,
+    modelo: modelo,
+    foto: foto
+  };
   argon2
     .hash(contraseña, { salt })
     .then(hash => {
@@ -38,16 +45,16 @@ router.post("/create", (req, res) => {
           contraseña: hash,
           salt: salt.toString("hex")
         })
-        .then(userRecord => {
-          let token = generateToken(userRecord);
+        .then(() => {
+          let token = generateToken(newUser);
           let usuarioSimple = {
-            usuario: userRecord.usuario,
-            cedula: userRecord.cedula,
-            placa: userRecord.placa,
-            modelo: userRecord.modelo,
-            foto: userRecord.foto
+            usuario: newUser.usuario,
+            cedula: newUser.cedula,
+            placa: newUser.placa,
+            modelo: newUser.modelo,
+            foto: newUser.foto
           };
-          res.send({ token: token, usuario: usuarioSimple });
+          res.send({ token: token, usuario: newUser });
         })
         .catch(err =>
           res.send({ err: err, msg: "error al insertar en la bd" })

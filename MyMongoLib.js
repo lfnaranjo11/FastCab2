@@ -168,9 +168,7 @@ const MyMongoLib = function() {
         const testCol = db.collection("usuarios");
         testCol
           .insertOne(item)
-          .then(() => {
-            return item;
-          })
+          .then(resolve)
           .catch(err => reject(err));
       });
     });
