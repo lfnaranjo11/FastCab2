@@ -12,10 +12,10 @@ router.post("/accept", (req, res) => {
     `*¡Tu viaje hacia ${viaje.direccion} ha sido confirmado!*
 
 *Información de tu conductor:*
-Nombre: ${conductor.nombre}
+Nombre: ${conductor.usuario}
 Cedula: ${conductor.cedula}
 Placa del carro: ${conductor.placa}
-Modelo del carro: ${conductor.carro}`,
+Modelo del carro: ${conductor.modelo}`,
     viaje.numero
   );
   myMongoLib

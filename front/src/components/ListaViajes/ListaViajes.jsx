@@ -35,12 +35,7 @@ function ListaViajes(props) {
       method: "POST", // or 'PUT'
       body: JSON.stringify({
         viaje: viaje,
-        conductor: JSON.stringify({
-          nombre: "Francisco Devia",
-          cedula: "19431215",
-          placa: "RGU-429",
-          carro: "Chevrolet Spark"
-        })
+        conductor: JSON.stringify(props.location.user)
       }),
       headers: {
         "Content-Type": "application/json"
