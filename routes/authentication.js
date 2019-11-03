@@ -36,8 +36,8 @@ router.post("/login", (req, res) => {
       usuario: usuario,
       contraseña: contraseña
     })
-    .then(usuario => {
-      res.send(usuario);
+    .then(user => {
+      res.send({ usuario: user.usuario, foto: user.foto });
     })
     .catch(err => res.send({ err: err, msg: "error al buscar el usuario" }));
 });
