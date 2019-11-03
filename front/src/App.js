@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   const [viajesNuevos, setViajesNuevos] = useState([]);
-  const [err, setErr] = useState("");
 
   useEffect(() => {
     const ws = new WebSocket("wss://taxis-whatsapp.herokuapp.com");
@@ -16,9 +15,6 @@ function App() {
     ws.onopen = () => {
       console.log("open my ws");
       ws.onmessage = msg => {
-        var x = [];
-
-        var x = msg.data;
         setViajesNuevos(JSON.parse(msg.data));
       };
     };
@@ -28,7 +24,7 @@ function App() {
       .then(res => res.json())
       .then(data => {
         if (data.err) {
-          setErr(JSON.stringify(data.err));
+          console.log(JSON.stringify(data.err));
         } else {
           setViajesNuevos(data);
         }
@@ -44,7 +40,15 @@ function App() {
             path="/"
             component={() => <ListaViajes viajes={viajesNuevos} />}
           />
-          <Route path="/servicio" component={() => <DetalleServicio />} />
+          <Route
+            path="/servicio"
+            component={props => (
+              <DetalleServicio
+                history={props.history}
+                location={props.location}
+              />
+            )}
+          />
         </Switch>
       </Router>
     </React.Fragment>

@@ -1,6 +1,6 @@
 .botonAmarillo {
   background-color: #f7b334;
-  color: black;
+  color: #323433;
   font-size: 16px;
   border: 1px solid #f7b334;
   outline: none;
@@ -9,7 +9,19 @@
   font-weight: bold;
   width: 100%;
 }
+.botonGris {
+  background-color: #323433;
+  color: white;
+  font-size: 16px;
+  border: 1px solid #323433;
+  outline: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  font-weight: bold;
+  width: 100%;
+}
 
 h4 {
+  color: #323433;
   font-weight: bold;
 }

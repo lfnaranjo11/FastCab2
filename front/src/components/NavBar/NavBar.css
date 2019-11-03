@@ -1,0 +1,9 @@
+.navBar {
+  background-color: #323433;
+  height: 9vh;
+}
+.iconoUser {
+  margin: 2vh;
+  height: 5vh;
+  float: right;
+}

@@ -1,0 +1,38 @@
+.nombreUsuario {
+  margin: 20px;
+  margin-left: 0;
+  margin-right: 0;
+}
+.fotoUsuario {
+  margin: 15px;
+  height: 60px;
+}
+.circuloverde {
+  margin: 15px;
+  height: 60px;
+  width: 60px;
+  background-color: #25d366;
+  border-radius: 50%;
+}
+.iconoWhatsapp {
+  margin: 10px;
+  height: 40px;
+}
+.textoBoton {
+  margin-top: 30px;
+}
+@media (max-width: 430px) {
+  .textoBoton {
+    margin-top: 35px;
+    font-size: 20px;
+  }
+}
+@media (max-width: 400px) {
+  .textoBoton {
+    margin-top: 35px;
+    font-size: 15px;
+  }
+}
+.margen {
+  margin-bottom: 15px;
+}

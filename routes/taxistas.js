@@ -24,4 +24,64 @@ Modelo del carro: ${conductor.carro}`,
     .catch(res.send(err));
 });
 
+router.post("/llegue", (req, res) => {
+  let viaje = req.body.viaje;
+  let conductor = req.body.conductor;
+  myWaLib.sendMessage(
+    `*¡Tu conductor ha llegado!*
+
+Por favor ve al punto de encuentro`,
+    viaje.usuario
+  );
+  myMongoLib
+    .llegue(viaje)
+    .then(res.send("ok"))
+    .catch(res.send(err));
+});
+
+router.post("/recoger", (req, res) => {
+  let viaje = req.body.viaje;
+  let conductor = req.body.conductor;
+  myWaLib.sendMessage(
+    `*Vas en el taxi correcto*
+
+¡Buen viaje!`,
+    viaje.usuario
+  );
+  myMongoLib
+    .recoger(viaje)
+    .then(res.send("ok"))
+    .catch(res.send(err));
+});
+
+router.post("/terminar", (req, res) => {
+  let viaje = req.body.viaje;
+  let conductor = req.body.conductor;
+  myWaLib.sendMessage(
+    `*Viaje Terminado*
+
+¡Gracias por usar FastCab!`,
+    viaje.usuario
+  );
+  myMongoLib
+    .terminar(viaje)
+    .then(res.send("ok"))
+    .catch(res.send(err));
+});
+
+router.post("/cancelar", (req, res) => {
+  let viaje = req.body.viaje;
+  let conductor = req.body.conductor;
+  myWaLib.sendMessage(
+    `*Viaje Cancelado*
+
+El taxista a cancelado tu viaje`,
+    viaje.usuario
+  );
+  myMongoLib
+    .terminar(viaje)
+    .then(res.send("ok"))
+    .catch(res.send(err));
+});
+
 module.exports = router;

@@ -87,7 +87,67 @@ const MyMongoLib = function() {
         let o_id = new ObjectID(viaje._id);
         let promise = testCol.updateOne(
           { _id: o_id },
+          { $set: { estado: "confirmado" } }
+        );
+        promise.then(res => resolve(res));
+        promise.catch(err => reject(err));
+      });
+    });
+  };
+
+  exports.llegue = viaje => {
+    return new Promise((resolve, reject) => {
+      client.connect(function(err, client) {
+        if (err !== null) {
+          reject(err);
+          return;
+        }
+        const db = client.db(dbName);
+        const testCol = db.collection("viajes");
+        let o_id = new ObjectID(viaje._id);
+        let promise = testCol.updateOne(
+          { _id: o_id },
+          { $set: { estado: "esperando" } }
+        );
+        promise.then(res => resolve(res));
+        promise.catch(err => reject(err));
+      });
+    });
+  };
+
+  exports.recoger = viaje => {
+    return new Promise((resolve, reject) => {
+      client.connect(function(err, client) {
+        if (err !== null) {
+          reject(err);
+          return;
+        }
+        const db = client.db(dbName);
+        const testCol = db.collection("viajes");
+        let o_id = new ObjectID(viaje._id);
+        let promise = testCol.updateOne(
+          { _id: o_id },
           { $set: { estado: "en curso" } }
+        );
+        promise.then(res => resolve(res));
+        promise.catch(err => reject(err));
+      });
+    });
+  };
+
+  exports.terminar = viaje => {
+    return new Promise((resolve, reject) => {
+      client.connect(function(err, client) {
+        if (err !== null) {
+          reject(err);
+          return;
+        }
+        const db = client.db(dbName);
+        const testCol = db.collection("viajes");
+        let o_id = new ObjectID(viaje._id);
+        let promise = testCol.updateOne(
+          { _id: o_id },
+          { $set: { estado: "terminado" } }
         );
         promise.then(res => resolve(res));
         promise.catch(err => reject(err));
