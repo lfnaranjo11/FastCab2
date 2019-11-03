@@ -37,17 +37,15 @@ router.post("/login", (req, res) => {
       contraseña: contraseña
     })
     .then(userRecord => {
-      res.send({
-        userRecord: userRecord.constraseña,
-        constraseñaRecibida: constraseña
-      });
+      res.send({ usuario: userRecord.usuario });
       /**
       argon2
-        .verify(userRecord.constraseña, contraseña)
-        .then(argon2Match => {
-          res.send(argon2Match);
+        .verify(userRecord.constraseña, constraseña)
+        .then(() => {
+          jwt = "el dt";
+          res.send(jwt);
         })
-        .catch(error => res.send(error));
+        .catch(err => res.send({ err: err, msg: "contraseña incorrect" }));
         */
     })
     .catch(err =>
