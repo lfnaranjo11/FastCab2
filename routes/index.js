@@ -1,4 +1,5 @@
 var express = require("express");
+const jwt = require("express-jwt");
 var router = express.Router();
 var MyMongoLib = require("../MyMongoLib");
 const myMongoLib = MyMongoLib();
@@ -8,12 +9,11 @@ router.get("/", function(req, res, next) {
   res.render("index", { title: "Express" });
 });
 
-router.get("/data", (req, res) => {
+router.get("/data", jwt({ secret: "proyectoWeb4" }), (req, res) => {
   myMongoLib
     .getDocs()
     .then(docs => {
-      console.log("docs");
-      res.send(req.headers.authorization);
+      res.send(token);
     })
     .catch(err => res.send({ err: true, msg: err }));
 });
