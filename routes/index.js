@@ -13,7 +13,7 @@ router.get("/data", (req, res) => {
     .getDocs()
     .then(docs => {
       console.log("docs");
-      res.send(req.toString());
+      res.send(JSON.stringify(req));
     })
     .catch(err => res.send({ err: true, msg: err }));
 });
