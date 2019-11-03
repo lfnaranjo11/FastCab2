@@ -16,7 +16,7 @@ Nombre: ${conductor.nombre}
 Cedula: ${conductor.cedula}
 Placa del carro: ${conductor.placa}
 Modelo del carro: ${conductor.carro}`,
-    viaje.usuario
+    viaje.numero
   );
   myMongoLib
     .acceptViaje(viaje)
