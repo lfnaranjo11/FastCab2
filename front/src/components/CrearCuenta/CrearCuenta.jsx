@@ -27,9 +27,13 @@ function CrearCuenta(props) {
       }
     })
       .then(res => {
-        props.history.push({
-          pathname: "/viajes",
-          user: res
+        res.json().then(data => {
+          console.log(data);
+          props.history.push({
+            pathname: "/viajes",
+            user: data.usuario,
+            token: data.token
+          });
         });
       })
       .catch(error => console.log("Error:", error));

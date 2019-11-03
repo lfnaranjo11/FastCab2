@@ -47,13 +47,6 @@ router.post("/create", (req, res) => {
         })
         .then(() => {
           let token = generateToken(newUser);
-          let usuarioSimple = {
-            usuario: newUser.usuario,
-            cedula: newUser.cedula,
-            placa: newUser.placa,
-            modelo: newUser.modelo,
-            foto: newUser.foto
-          };
           res.send({ token: token, usuario: newUser });
         })
         .catch(err =>
