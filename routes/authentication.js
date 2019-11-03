@@ -10,15 +10,19 @@ router.post("/create", (req, res) => {
   let contraseña = req.body.contraseña;
   let foto = req.body.foto;
   const salt = randomBytes(32);
-  const passwordHashed = await argon2.hash(contraseña, { salt });
-  myMongoLib
-    .createUser({
-      usuario: usuario,
-      contraseña: passwordHashed,
-      foto: foto,
-      salt: salt.toString("hex")
+  argon2
+    .hash(contraseña, { salt })
+    .then(hash => {
+      myMongoLib
+        .createUser({
+          usuario: usuario,
+          contraseña: hash,
+          foto: foto,
+          salt: salt.toString("hex")
+        })
+        .then(() => res.send(JSON.stringify(passwordHashed)))
+        .catch(err => res.send({ err: true, msg: err }));
     })
-    .then(() => res.send(JSON.stringify(passwordHashed)))
     .catch(err => res.send({ err: true, msg: err }));
 });
 
