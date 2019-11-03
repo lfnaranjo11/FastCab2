@@ -61,7 +61,13 @@ function App() {
           />
           <Route
             path="/viajes"
-            component={() => <ListaViajes viajes={viajesNuevos} />}
+            component={props => (
+              <ListaViajes
+                viajes={viajesNuevos}
+                history={props.history}
+                location={props.location}
+              />
+            )}
           />
           <Route
             path="/servicio"

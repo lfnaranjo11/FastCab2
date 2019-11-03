@@ -38,7 +38,17 @@ router.post("/create", (req, res) => {
           contraseña: hash,
           salt: salt.toString("hex")
         })
-        .then(() => res.send("Creo al usuario"))
+        .then(userRecord => {
+          let token = generateToken(userRecord);
+          let usuarioSimple = {
+            usuario: userRecord.usuario,
+            cedula: userRecord.cedula,
+            placa: userRecord.placa,
+            modelo: userRecord.modelo,
+            foto: userRecord.foto
+          };
+          res.send({ token: token, usuario: usuarioSimple });
+        })
         .catch(err =>
           res.send({ err: err, msg: "error al insertar en la bd" })
         );

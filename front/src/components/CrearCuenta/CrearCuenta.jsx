@@ -2,10 +2,37 @@ import React from "react";
 import "./CrearCuenta.css";
 
 function CrearCuenta(props) {
+  let nombre = "";
+  let cedula = "";
+  let placa = "";
+  let modelo = "";
+  let foto = "";
+  let contraseña = "";
+
   let handleCrear = () => {
-    props.history.push({
-      pathname: "/viajes"
-    });
+    let newUser = {
+      usuario: nombre,
+      cedula: cedula,
+      placa: placa,
+      modelo: modelo,
+      foto: foto,
+      contraseña: contraseña
+    };
+
+    fetch("auth/create", {
+      method: "POST", // or 'PUT'
+      body: JSON.stringify(newUser),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => {
+        props.history.push({
+          pathname: "/viajes",
+          user: res
+        });
+      })
+      .catch(error => console.log("Error:", error));
   };
   let handleRegresar = () => {
     props.history.goBack();
@@ -21,7 +48,36 @@ function CrearCuenta(props) {
           <input
             className="form-control"
             placeholder="Ingrese un nombre de usuario"
+            onChange={e => (nombre = e.target.value)}
           />
+        </div>
+        <div className="form-group">
+          <label>Cedula</label>
+          <input
+            className="form-control"
+            placeholder="Ingrese su cedula"
+            onChange={e => (cedula = e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label>Placa</label>
+          <input
+            className="form-control"
+            placeholder="Ingrese la placa de su vehiculo"
+            onChange={e => (placa = e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label>Modelo del Vehiculo</label>
+          <input
+            className="form-control"
+            placeholder="Ingrese el modelo de su vehiculo"
+            onChange={e => (modelo = e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label>Foto de Perfil</label>
+          <input type="file" className="form-control-file" />
         </div>
         <div className="form-group">
           <label>Contraseña</label>
@@ -29,19 +85,8 @@ function CrearCuenta(props) {
             type="password"
             className="form-control"
             placeholder="Ingrese una contraseña"
+            onChange={e => (contraseña = e.target.value)}
           />
-        </div>
-        <div className="form-group">
-          <label>Verificación de Contraseña</label>
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Vuelva a ingresar la contraseña"
-          />
-        </div>
-        <div className="form-group">
-          <label>Foto de Perfil</label>
-          <input type="file" className="form-control-file" />
         </div>
       </form>
       <div className="row justify-content-center">
