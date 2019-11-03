@@ -9,7 +9,7 @@ router.get("/", function(req, res, next) {
   res.render("index", { title: "Express" });
 });
 
-router.get("/data", jwt({ secret: "proyectoWeb4" }), (req, res) => {
+router.get("/data", jwt({ secret: process.env.SECRET }), (req, res) => {
   let user = req.user.data;
   myMongoLib
     .getDocs()

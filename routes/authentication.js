@@ -11,8 +11,8 @@ let generateToken = user => {
     _id: user._id,
     name: user.usuario
   };
-  const signature = "proyectoWeb4";
-  const expiration = 60;
+  const signature = process.env.SECRET;
+  const expiration = "8h";
 
   return jwt.sign({ data }, signature, { expiresIn: expiration });
 };
