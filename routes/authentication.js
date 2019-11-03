@@ -10,7 +10,7 @@ router.post("/create", (req, res) => {
   let contraseña = req.body.contraseña;
   let foto = req.body.foto;
   const salt = randomBytes(32);
-  const passwordHashed = argon2.hash(contraseña, { salt });
+  const passwordHashed = await argon2.hash(contraseña, { salt });
   myMongoLib
     .createUser({
       usuario: usuario,
