@@ -37,7 +37,7 @@ router.post("/login", (req, res) => {
       contraseña: contraseña
     })
     .then(userRecord => {
-      res.send({ userRecord: userRecord.constraseña });
+      res.send({ userRecord: userRecord });
       /**
       argon2
         .verify(userRecord.constraseña, constraseña)
