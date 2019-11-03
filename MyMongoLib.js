@@ -57,8 +57,7 @@ const MyMongoLib = function() {
     });
   };
 
-  exports.insertDocument = item => {
-    console.log(item);
+  exports.createUser = usuario => {
     return new Promise((resolve, reject) => {
       client.connect(function(err, client) {
         if (err !== null) {
@@ -68,7 +67,7 @@ const MyMongoLib = function() {
         const db = client.db(dbName);
         // Insert a single document
         const testCol = db.collection("viajes");
-        let promise = testCol.insertOne(item);
+        let promise = testCol.insertOne(usuario);
         promise.then(res => resolve(res));
         promise.catch(err => reject(err));
       });
@@ -149,6 +148,25 @@ const MyMongoLib = function() {
           { _id: o_id },
           { $set: { estado: "terminado" } }
         );
+        promise.then(res => resolve(res));
+        promise.catch(err => reject(err));
+      });
+    });
+  };
+
+  // Auth--------------------------------------------------
+
+  exports.createUser = item => {
+    return new Promise((resolve, reject) => {
+      client.connect(function(err, client) {
+        if (err !== null) {
+          reject(err);
+          return;
+        }
+        const db = client.db(dbName);
+        // Insert a single document
+        const testCol = db.collection("usuarios");
+        let promise = testCol.insertOne(item);
         promise.then(res => resolve(res));
         promise.catch(err => reject(err));
       });
