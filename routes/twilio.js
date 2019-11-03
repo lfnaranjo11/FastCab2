@@ -36,7 +36,8 @@ router.post("/newmessage", (req, res) => {
       .insertDocument({
         direccion: clientesEnEspera[usuario].direccion,
         estado: "en espera",
-        usuario: usuario
+        numero: usuario,
+        usuario: "Mateo Devia"
       })
       .then(console.log("nuevo pedido"))
       .catch(err => console.log(err));
