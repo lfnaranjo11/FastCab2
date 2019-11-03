@@ -36,8 +36,14 @@ router.post("/login", (req, res) => {
       usuario: usuario,
       contraseña: contraseña
     })
-    .then(user => {
-      res.send({ usuario: user.usuario, foto: user.foto });
+    .then(userRecord => {
+      argon2
+        .verify(userRecord.constraseña, constraseña)
+        .then(listo => {
+          jwt = "el dt";
+          res.send(jwt);
+        })
+        .catch(err => res.send({ err: err, msg: "contraseña incorrect" }));
     })
     .catch(err => res.send({ err: err, msg: "error al buscar el usuario" }));
 });
