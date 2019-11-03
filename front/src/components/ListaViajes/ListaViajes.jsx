@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "../NavBar/NavBar";
 import "./ListaViajes.css";
-import { withRouter } from "react-router-dom";
 
 function ListaViajes(props) {
+  const [viajesNuevos, setViajesNuevos] = useState([]);
+  useEffect(() => {
+    const ws = new WebSocket("wss://taxis-whatsapp.herokuapp.com");
+
+    //abre el socket
+    ws.onopen = () => {
+      console.log("open my ws");
+      ws.onmessage = msg => {
+        setViajesNuevos(JSON.parse(msg.data));
+      };
+    };
+
+    fetch("data", {
+      headers: {
+        Authorization: "Bearer " + props.location.token
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.err) {
+          console.log(JSON.stringify(data.err));
+        } else {
+          setViajesNuevos(data);
+        }
+      });
+  }, []);
+
   let handleAccept = viaje => {
     fetch("taxistas/accept", {
       method: "POST", // or 'PUT'
@@ -33,7 +59,7 @@ function ListaViajes(props) {
     <React.Fragment>
       <NavBar />
       <div className="container">
-        {props.viajes.map(viaje => (
+        {viajesNuevos.map(viaje => (
           <div className="card shadow" key={viaje._id}>
             <div className="card-body">
               <h4 className="card-title">{viaje.direccion}</h4>
@@ -51,4 +77,4 @@ function ListaViajes(props) {
   );
 }
 
-export default withRouter(ListaViajes);
+export default ListaViajes;

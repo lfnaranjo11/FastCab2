@@ -28,7 +28,6 @@ function CrearCuenta(props) {
     })
       .then(res => {
         res.json().then(data => {
-          console.log(data);
           props.history.push({
             pathname: "/viajes",
             user: data.usuario,
@@ -78,10 +77,6 @@ function CrearCuenta(props) {
             placeholder="Ingrese el modelo de su vehiculo"
             onChange={e => (modelo = e.target.value)}
           />
-        </div>
-        <div className="form-group">
-          <label>Foto de Perfil</label>
-          <input type="file" className="form-control-file" />
         </div>
         <div className="form-group">
           <label>Contraseña</label>

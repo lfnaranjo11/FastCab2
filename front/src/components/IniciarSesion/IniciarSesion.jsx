@@ -2,10 +2,31 @@ import React from "react";
 import "./IniciarSesion.css";
 
 function IniciarSesion(props) {
+  let nombre = "";
+  let contraseña = "";
   let handleIniciarSesion = () => {
-    props.history.push({
-      pathname: "/viajes"
-    });
+    let newUser = {
+      usuario: nombre,
+      contraseña: contraseña
+    };
+
+    fetch("auth/login", {
+      method: "POST", // or 'PUT'
+      body: JSON.stringify(newUser),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => {
+        res.json().then(data => {
+          props.history.push({
+            pathname: "/viajes",
+            user: data.usuario,
+            token: data.token
+          });
+        });
+      })
+      .catch(error => console.log("Error:", error));
   };
   let handleRegresar = () => {
     props.history.goBack();
@@ -21,6 +42,7 @@ function IniciarSesion(props) {
           <input
             className="form-control"
             placeholder="Ingrese el nombre de usuario"
+            onChange={e => (nombre = e.target.value)}
           />
         </div>
         <div className="form-group">
@@ -29,6 +51,7 @@ function IniciarSesion(props) {
             type="password"
             className="form-control"
             placeholder="Ingrese su contraseña"
+            onChange={e => (contraseña = e.target.value)}
           />
         </div>
       </form>
