@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Bienvenida from "./components/Bienvenida/Bienvenida";
+import IniciarSesion from "./components/IniciarSesion/IniciarSesion";
+import CrearCuenta from "./components/CrearCuenta/CrearCuenta";
 import ListaViajes from "./components/ListaViajes/ListaViajes";
 import DetalleServicio from "./components/DetalleServicio/DetalleServicio";
 import "./App.css";
@@ -9,7 +12,6 @@ function App() {
 
   useEffect(() => {
     const ws = new WebSocket("wss://taxis-whatsapp.herokuapp.com");
-    //const ws = new WebSocket("ws://localhost:3001");
 
     //abre el socket
     ws.onopen = () => {
@@ -38,6 +40,27 @@ function App() {
           <Route
             exact
             path="/"
+            component={props => (
+              <Bienvenida history={props.history} location={props.location} />
+            )}
+          />
+          <Route
+            path="/iniciarsesion"
+            component={props => (
+              <IniciarSesion
+                history={props.history}
+                location={props.location}
+              />
+            )}
+          />
+          <Route
+            path="/crearcuenta"
+            component={props => (
+              <CrearCuenta history={props.history} location={props.location} />
+            )}
+          />
+          <Route
+            path="/viajes"
             component={() => <ListaViajes viajes={viajesNuevos} />}
           />
           <Route

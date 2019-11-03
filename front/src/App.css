@@ -20,6 +20,26 @@
   font-weight: bold;
   width: 100%;
 }
+.botonAmarilloChiquito {
+  background-color: #f7b334;
+  color: #323433;
+  font-size: 24px;
+  border: 1px solid #f7b334;
+  outline: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  font-weight: bold;
+}
+.botonGrisChiquito {
+  background-color: #323433;
+  color: white;
+  font-size: 24px;
+  border: 1px solid #323433;
+  outline: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  font-weight: bold;
+}
 
 h4 {
   color: #323433;

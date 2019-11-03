@@ -104,7 +104,11 @@ function DetalleServicio(props) {
         <h1 className="nombreUsuario">{viaje.usuario}</h1>
       </div>
       <h2>{viaje.direccion}</h2>
-      <GoogleMap lat={5.6984895} lon={-74.03693240000001} />
+      <GoogleMap
+        lat={5.6984895}
+        lon={-74.03693240000001}
+        direccion={viaje.direccion}
+      />
       <a href={"https://wa.me/" + viaje.numero.split("whatsapp:+")[1]}>
         <div className="row">
           <div className="circuloverde">

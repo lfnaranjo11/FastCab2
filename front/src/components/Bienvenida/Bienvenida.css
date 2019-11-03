@@ -1,0 +1,26 @@
+.centerPage {
+  text-align: center;
+  margin-top: 25vh;
+}
+.logo {
+  height: 20vh;
+  margin-bottom: 5vh;
+}
+.margen {
+  margin: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 0px !important;
+}
+@media (max-width: 450px) {
+  h1 {
+    font-size: 25px;
+  }
+
+  .botonAmarilloChiquito {
+    font-size: 16px !important;
+  }
+  .botonGrisChiquito {
+    font-size: 16px !important;
+  }
+}

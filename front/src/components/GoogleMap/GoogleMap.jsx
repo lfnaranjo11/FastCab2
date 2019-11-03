@@ -6,22 +6,19 @@ class SimpleMap extends Component {
     const geocoder = new maps.Geocoder();
     let newLat = this.props.lat;
     let newLon = this.props.lon;
-    geocoder.geocode(
-      { address: "Cra. 11b #119-36, Bogotá" },
-      (results, status) => {
-        if (status === "OK") {
-          newLat = results[0].geometry.location.lat();
-          newLon = results[0].geometry.location.lng();
-        }
-        new maps.Marker({
-          position: { lat: newLat, lng: newLon },
-          map,
-          title: "Hello World!"
-        });
-
-        map.panTo({ lat: newLat, lng: newLon });
+    geocoder.geocode({ address: this.props.direccion }, (results, status) => {
+      if (status === "OK") {
+        newLat = results[0].geometry.location.lat();
+        newLon = results[0].geometry.location.lng();
       }
-    );
+      new maps.Marker({
+        position: { lat: newLat, lng: newLon },
+        map,
+        title: "Hello World!"
+      });
+
+      map.panTo({ lat: newLat, lng: newLon });
+    });
   }
 
   render() {
