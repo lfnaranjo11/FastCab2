@@ -21,7 +21,7 @@ router.get("/data", jwt({ secret: process.env.SECRET }), (req, res) => {
     );
 });
 
-router.post("/insert", (req, res) => {
+router.post("/insert", jwt({ secret: process.env.SECRET }), (req, res) => {
   let body = req.body;
   myMongoLib
     .insertDocument(body)

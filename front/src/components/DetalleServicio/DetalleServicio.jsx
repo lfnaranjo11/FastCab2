@@ -25,7 +25,8 @@ class DetalleServicio extends Component {
         })
       }),
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + this.props.location.token
       }
     })
       .then(res => {})
@@ -48,7 +49,8 @@ class DetalleServicio extends Component {
         })
       }),
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + this.props.location.token
       }
     })
       .then(res => {})
@@ -71,7 +73,8 @@ class DetalleServicio extends Component {
         })
       }),
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + this.props.location.token
       }
     })
       .then(res => {})
@@ -99,7 +102,8 @@ class DetalleServicio extends Component {
         })
       }),
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + this.props.location.token
       }
     })
       .then(res => {})

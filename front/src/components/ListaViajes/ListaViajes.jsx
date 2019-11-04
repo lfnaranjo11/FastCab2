@@ -40,7 +40,8 @@ function ListaViajes(props) {
       method: "POST", // or 'PUT'
       body: bod,
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + props.location.token
       }
     })
       .then(res => {})

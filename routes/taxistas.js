@@ -1,11 +1,12 @@
 var express = require("express");
+const jwt = require("express-jwt");
 var router = express.Router();
 var MyWaLib = require("../MyWaLib");
 var MyMongoLib = require("../MyMongoLib");
 const myWaLib = MyWaLib();
 const myMongoLib = MyMongoLib();
 
-router.post("/accept", (req, res) => {
+router.post("/accept", jwt({ secret: process.env.SECRET }), (req, res) => {
   let viaje = req.body.viaje;
   let conductor = req.body.conductor;
   myWaLib.sendMessage(
@@ -25,7 +26,7 @@ Modelo del carro: ${conductor.modelo}`,
     .catch(res.send(err));
 });
 
-router.post("/llegue", (req, res) => {
+router.post("/llegue", jwt({ secret: process.env.SECRET }), (req, res) => {
   let viaje = req.body.viaje;
   let conductor = req.body.conductor;
   myWaLib.sendMessage(
@@ -39,7 +40,7 @@ Por favor ve al punto de encuentro`,
     .catch(res.send(err));
 });
 
-router.post("/recoger", (req, res) => {
+router.post("/recoger", jwt({ secret: process.env.SECRET }), (req, res) => {
   let viaje = req.body.viaje;
   let conductor = req.body.conductor;
   myWaLib.sendMessage(
@@ -53,7 +54,7 @@ router.post("/recoger", (req, res) => {
     .catch(res.send(err));
 });
 
-router.post("/terminar", (req, res) => {
+router.post("/terminar", jwt({ secret: process.env.SECRET }), (req, res) => {
   let viaje = req.body.viaje;
   let conductor = req.body.conductor;
   myWaLib.sendMessage(
@@ -67,7 +68,7 @@ router.post("/terminar", (req, res) => {
     .catch(res.send(err));
 });
 
-router.post("/cancelar", (req, res) => {
+router.post("/cancelar", jwt({ secret: process.env.SECRET }), (req, res) => {
   let viaje = req.body.viaje;
   let conductor = req.body.conductor;
   myWaLib.sendMessage(
