@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Bienvenida from "./components/Bienvenida/Bienvenida";
 import IniciarSesion from "./components/IniciarSesion/IniciarSesion";
 import CrearCuenta from "./components/CrearCuenta/CrearCuenta";
 import ListaViajes from "./components/ListaViajes/ListaViajes";
 import DetalleServicio from "./components/DetalleServicio/DetalleServicio";
+import MiPerfil from "./components/MiPerfil/MiPerfil";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -47,6 +48,12 @@ function App(props) {
                 history={props.history}
                 location={props.location}
               />
+            )}
+          />
+          <Route
+            path="/miPerfil"
+            component={props => (
+              <MiPerfil history={props.history} location={props.location} />
             )}
           />
         </Switch>

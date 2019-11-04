@@ -2,14 +2,25 @@ import React from "react";
 import "./NavBar.css";
 import icon from "./user.svg";
 
-function ListaViajes(props) {
+function NavBar(props) {
+  let handleMiPerfil = () => {
+    props.history.push({
+      pathname: "/miperfil",
+      conductor: props.location.conductor,
+      token: props.location.token
+    });
+  };
+
   return (
     <div className="navBar">
-      <a href="miPerfil">
-        <img className="iconoUser" src={icon} alt="user icon" />
-      </a>
+      <img
+        onClick={handleMiPerfil}
+        className="iconoUser"
+        src={icon}
+        alt="user icon"
+      />
     </div>
   );
 }
 
-export default ListaViajes;
+export default NavBar;
