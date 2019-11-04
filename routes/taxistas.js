@@ -13,6 +13,7 @@ router.post("/accept", (req, res) => {
 
 *Información de tu conductor:*
 Nombre: ${conductor.usuario}
+Numero: ${conductor.numero}
 Cedula: ${conductor.cedula}
 Placa del carro: ${conductor.placa}
 Modelo del carro: ${conductor.modelo}`,

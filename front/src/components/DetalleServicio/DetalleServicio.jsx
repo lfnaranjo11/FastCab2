@@ -119,7 +119,7 @@ class DetalleServicio extends Component {
       <div className="container">
         <div className="row">
           <img className="fotoUsuario" src={userImage} alt="user icon" />
-          <h1 className="nombreUsuario">{this.state.viaje.usuario}</h1>
+          <h1 className="nombreUsuario">{this.state.viaje.numero}</h1>
         </div>
         <h2>{this.state.viaje.direccion}</h2>
         <GoogleMap

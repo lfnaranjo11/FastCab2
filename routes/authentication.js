@@ -19,6 +19,7 @@ let generateToken = user => {
 
 router.post("/create", (req, res) => {
   let usuario = req.body.usuario;
+  let numero = req.body.numero;
   let cedula = req.body.cedula;
   let placa = req.body.placa;
   let modelo = req.body.modelo;
@@ -27,6 +28,7 @@ router.post("/create", (req, res) => {
   const salt = randomBytes(32);
   let newUser = {
     usuario: usuario,
+    numero: numero,
     cedula: cedula,
     placa: placa,
     modelo: modelo,
@@ -38,6 +40,7 @@ router.post("/create", (req, res) => {
       myMongoLib
         .createUser({
           usuario: usuario,
+          numero: numero,
           cedula: cedula,
           placa: placa,
           modelo: modelo,
@@ -74,6 +77,7 @@ router.post("/login", (req, res) => {
           let token = generateToken(userRecord);
           let usuarioSimple = {
             usuario: userRecord.usuario,
+            numero: userRecord.numero,
             cedula: userRecord.cedula,
             placa: userRecord.placa,
             modelo: userRecord.modelo,

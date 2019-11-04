@@ -3,6 +3,7 @@ import "./CrearCuenta.css";
 
 function CrearCuenta(props) {
   let nombre = "";
+  let numero = "";
   let cedula = "";
   let placa = "";
   let modelo = "";
@@ -12,6 +13,7 @@ function CrearCuenta(props) {
   let handleCrear = () => {
     let newUser = {
       usuario: nombre,
+      numero: numero,
       cedula: cedula,
       placa: placa,
       modelo: modelo,
@@ -52,6 +54,14 @@ function CrearCuenta(props) {
             className="form-control"
             placeholder="Ingrese un nombre de usuario"
             onChange={e => (nombre = e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label>Numero de Whatsapp</label>
+          <input
+            className="form-control"
+            placeholder="Ingrese su numero de Whatsapp"
+            onChange={e => (numero = e.target.value)}
           />
         </div>
         <div className="form-group">
