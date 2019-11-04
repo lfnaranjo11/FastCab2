@@ -30,7 +30,7 @@ function CrearCuenta(props) {
         res.json().then(data => {
           props.history.push({
             pathname: "/viajes",
-            user: data.usuario,
+            conductor: data.usuario,
             token: data.token
           });
         });

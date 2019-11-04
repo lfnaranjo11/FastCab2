@@ -33,10 +33,8 @@ function ListaViajes(props) {
   let handleAccept = viaje => {
     let bod = JSON.stringify({
       viaje: viaje,
-      conductor: props.location.user
+      conductor: props.location.conductor
     });
-
-    console.log(bod);
 
     fetch("taxistas/accept", {
       method: "POST", // or 'PUT'
@@ -45,13 +43,14 @@ function ListaViajes(props) {
         "Content-Type": "application/json"
       }
     })
-      .then(res => console.log("Exito", res))
+      .then(res => {})
       .catch(error => console.log("Error:", error));
     viaje.estado = "confirmado";
     props.history.push({
       pathname: "/servicio",
       viaje: viaje,
-      conductor: props.location.user
+      conductor: props.location.conductor,
+      token: props.location.token
     });
   };
 

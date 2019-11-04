@@ -7,7 +7,7 @@ import DetalleServicio from "./components/DetalleServicio/DetalleServicio";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-function App() {
+function App(props) {
   return (
     <React.Fragment>
       <Router>

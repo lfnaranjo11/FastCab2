@@ -1,17 +1,18 @@
-import React from "react";
+import React, { Component } from "react";
 import GoogleMap from "../GoogleMap/GoogleMap";
 import "./DetalleServicio.css";
 import userImage from "./user.svg";
 import whatsappIcon from "./whatsapp.svg";
 
-function DetalleServicio(props) {
-  let viaje = props.location.viaje || {
-    direccion: "Universidad de los Andes",
-    estado: "en curso",
-    usuario: "Mateo Devia",
-    numero: "whatsapp:+573132803320"
-  };
-  let handleRecoger = viaje => {
+class DetalleServicio extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      viaje: props.location.viaje
+    };
+  }
+
+  handleRecoger = viaje => {
     fetch("taxistas/recoger", {
       method: "POST", // or 'PUT'
       body: JSON.stringify({
@@ -27,12 +28,14 @@ function DetalleServicio(props) {
         "Content-Type": "application/json"
       }
     })
-      .then(res => console.log("Exito", res))
+      .then(res => {})
       .catch(error => console.log("Error:", error));
-    viaje.estado = "en curso";
+    let newViaje = { ...this.state.viaje };
+    newViaje.estado = "en curso";
+    this.setState({ viaje: newViaje });
   };
 
-  let handleLlegue = viaje => {
+  handleLlegue = viaje => {
     fetch("taxistas/llegue", {
       method: "POST", // or 'PUT'
       body: JSON.stringify({
@@ -48,12 +51,14 @@ function DetalleServicio(props) {
         "Content-Type": "application/json"
       }
     })
-      .then(res => console.log("Exito", res))
+      .then(res => {})
       .catch(error => console.log("Error:", error));
-    viaje.estado = "esperando";
+    let newViaje = { ...this.state.viaje };
+    newViaje.estado = "esperando";
+    this.setState({ viaje: newViaje });
   };
 
-  let handleTerminar = viaje => {
+  handleTerminar = viaje => {
     fetch("taxistas/terminar", {
       method: "POST", // or 'PUT'
       body: JSON.stringify({
@@ -69,13 +74,19 @@ function DetalleServicio(props) {
         "Content-Type": "application/json"
       }
     })
-      .then(res => console.log("Exito", res))
+      .then(res => {})
       .catch(error => console.log("Error:", error));
-    viaje.estado = "en curso";
-    props.history.goBack();
+    let newViaje = { ...this.state.viaje };
+    newViaje.estado = "terminado";
+    this.setState({ viaje: newViaje });
+    this.props.history.push({
+      pathname: "/viajes",
+      conductor: this.props.location.conductor,
+      token: this.props.location.token
+    });
   };
 
-  let handleCancelar = viaje => {
+  handleCancelar = viaje => {
     fetch("taxistas/cancelar", {
       method: "POST", // or 'PUT'
       body: JSON.stringify({
@@ -91,64 +102,80 @@ function DetalleServicio(props) {
         "Content-Type": "application/json"
       }
     })
-      .then(res => console.log("Exito", res))
+      .then(res => {})
       .catch(error => console.log("Error:", error));
-    viaje.estado = "en curso";
-    props.history.goBack();
+    let newViaje = { ...this.state.viaje };
+    newViaje.estado = "cancelado";
+    this.setState({ viaje: newViaje });
+    this.props.history.push({
+      pathname: "/viajes",
+      conductor: this.props.location.conductor,
+      token: this.props.location.token
+    });
   };
 
-  return (
-    <div className="container">
-      <div className="row">
-        <img className="fotoUsuario" src={userImage} alt="user icon" />
-        <h1 className="nombreUsuario">{viaje.usuario}</h1>
-      </div>
-      <h2>{viaje.direccion}</h2>
-      <GoogleMap
-        lat={5.6984895}
-        lon={-74.03693240000001}
-        direccion={viaje.direccion}
-      />
-      <a href={"https://wa.me/" + viaje.numero.split("whatsapp:+")[1]}>
+  render() {
+    return (
+      <div className="container">
         <div className="row">
-          <div className="circuloverde">
-            <img className="iconoWhatsapp" src={whatsappIcon} alt="user icon" />
-          </div>
-          <h4 className="textoBoton">Enviar mensaje a Whatsapp</h4>
+          <img className="fotoUsuario" src={userImage} alt="user icon" />
+          <h1 className="nombreUsuario">{this.state.viaje.usuario}</h1>
         </div>
-      </a>
-      {viaje.estado === "confirmado" && (
-        <button
-          className="botonAmarillo margen"
-          onClick={() => handleLlegue(viaje)}
+        <h2>{this.state.viaje.direccion}</h2>
+        <GoogleMap
+          lat={5.6984895}
+          lon={-74.03693240000001}
+          direccion={this.state.viaje.direccion}
+        />
+        <a
+          href={
+            "https://wa.me/" + this.state.viaje.numero.split("whatsapp:+")[1]
+          }
         >
-          Ya llegué
-        </button>
-      )}
-      {viaje.estado === "esperando" && (
+          <div className="row">
+            <div className="circuloverde">
+              <img
+                className="iconoWhatsapp"
+                src={whatsappIcon}
+                alt="user icon"
+              />
+            </div>
+            <h4 className="textoBoton">Enviar mensaje a Whatsapp</h4>
+          </div>
+        </a>
+        {this.state.viaje.estado === "confirmado" && (
+          <button
+            className="botonAmarillo margen"
+            onClick={() => this.handleLlegue(this.state.viaje)}
+          >
+            Ya llegué
+          </button>
+        )}
+        {this.state.viaje.estado === "esperando" && (
+          <button
+            className="botonAmarillo margen"
+            onClick={() => this.handleRecoger(this.state.viaje)}
+          >
+            Ya recogí al usuario
+          </button>
+        )}
+        {this.state.viaje.estado === "en curso" && (
+          <button
+            className="botonAmarillo margen"
+            onClick={() => this.handleTerminar(this.state.viaje)}
+          >
+            Terminar Recorrido
+          </button>
+        )}
         <button
-          className="botonAmarillo margen"
-          onClick={() => handleRecoger(viaje)}
+          className="botonGris margen"
+          onClick={() => this.handleCancelar(this.state.viaje)}
         >
-          Ya recogí al usuario
+          Cancelar Viaje
         </button>
-      )}
-      {viaje.estado === "en curso" && (
-        <button
-          className="botonAmarillo margen"
-          onClick={() => handleTerminar(viaje)}
-        >
-          Terminar Recorrido
-        </button>
-      )}
-      <button
-        className="botonGris margen"
-        onClick={() => handleCancelar(viaje)}
-      >
-        Cancelar Viaje
-      </button>
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default DetalleServicio;
