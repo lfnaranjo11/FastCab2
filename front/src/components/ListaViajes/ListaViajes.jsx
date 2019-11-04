@@ -58,6 +58,9 @@ function ListaViajes(props) {
   return (
     <React.Fragment>
       <NavBar history={props.history} location={props.location} />
+      <div className="tituloLista">
+        <h1>Nuevas Solucitudes</h1>
+      </div>
       <div className="container">
         {viajesNuevos.map(viaje => (
           <div className="card shadow" key={viaje._id}>
