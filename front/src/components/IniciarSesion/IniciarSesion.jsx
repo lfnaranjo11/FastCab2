@@ -19,6 +19,11 @@ function IniciarSesion(props) {
     })
       .then(res => {
         res.json().then(data => {
+          console.log(data);
+          if (data.msg) {
+            alert("Credenciales Invalidas");
+            return;
+          }
           props.history.push({
             pathname: "/viajes",
             conductor: data.usuario,
