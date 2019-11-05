@@ -41,17 +41,12 @@ git clone https://github.com/lfnaranjo11/FastCab2.git
 
 2) step into de directory
 ```
-cd FastCab2
+cd FastCab2/front
 ```
-
-3) npm install on the file 
+3) install on the front
 
 ```
 npm install 
-```
-4) install on the 
-
-```
 ```
 
 5) run the file
