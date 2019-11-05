@@ -1,3 +1,10 @@
+/* Code review de Daniel Ramirez
+En general es un buen proyecto, me gusta que trabajaron muy organizadamente y el codigo es facil de entender mientras se va leyendo.
+Se nota el esfuerzo y dedicacion que le metieron al proyecto, algo tambien que me gusto es que manejan correctamente las variables de entorno,
+algo que en mi proyecto no pudimos desarrollar bien, ya que al momento de desplegar nos causo problemas. Pero en general me parece que el
+codigo esta bien manejado y se rige por las epecificaciones del profesor. El diseño en general me parecio muy bueno.
+*/
+
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
