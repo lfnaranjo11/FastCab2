@@ -44,61 +44,77 @@ function CrearCuenta(props) {
   };
   return (
     <div className="container">
-      <div className="titulo2">
+      <div role="contentinfo"></div>
+
+      <div role="banner" className="titulo2">
         <h1>Crear Cuenta</h1>
       </div>
-      <form>
-        <div className="form-group">
-          <label>Nombre de Usuario</label>
-          <input
-            className="form-control"
-            placeholder="Ingrese un nombre de usuario"
-            onChange={e => (nombre = e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Numero de Whatsapp</label>
-          <input
-            className="form-control"
-            placeholder="Ingrese su numero de Whatsapp"
-            onChange={e => (numero = e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Cedula</label>
-          <input
-            className="form-control"
-            placeholder="Ingrese su cedula"
-            onChange={e => (cedula = e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Placa</label>
-          <input
-            className="form-control"
-            placeholder="Ingrese la placa de su vehiculo"
-            onChange={e => (placa = e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Modelo del Vehiculo</label>
-          <input
-            className="form-control"
-            placeholder="Ingrese el modelo de su vehiculo"
-            onChange={e => (modelo = e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Contraseña</label>
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Ingrese una contraseña"
-            onChange={e => (contraseña = e.target.value)}
-          />
-        </div>
-      </form>
-      <div className="row justify-content-center">
+      <div role="main">
+        <form>
+          <div className="form-group">
+            <label className="label">
+              Nombre de Usuario
+              <input
+                className="form-control"
+                placeholder="Ingrese un nombre de usuario"
+                onChange={e => (nombre = e.target.value)}
+              />
+            </label>
+          </div>
+          <div className="form-group">
+            <label className="label">
+              Numero de Whatsapp
+              <input
+                className="form-control"
+                placeholder="Ingrese su numero de Whatsapp"
+                onChange={e => (numero = e.target.value)}
+              />
+            </label>
+          </div>
+          <div className="form-group">
+            <label className="label">
+              Cedula
+              <input
+                className="form-control"
+                placeholder="Ingrese su cedula"
+                onChange={e => (cedula = e.target.value)}
+              />
+            </label>
+          </div>
+          <div className="form-group">
+            <label className="label">
+              Placa
+              <input
+                className="form-control"
+                placeholder="Ingrese la placa de su vehiculo"
+                onChange={e => (placa = e.target.value)}
+              />
+            </label>
+          </div>
+          <div className="form-group">
+            <label className="label">
+              Modelo del Vehiculo
+              <input
+                className="form-control"
+                placeholder="Ingrese el modelo de su vehiculo"
+                onChange={e => (modelo = e.target.value)}
+              />
+            </label>
+          </div>
+          <div className="form-group">
+            <label className="label">
+              Contraseña
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Ingrese una contraseña"
+                onChange={e => (contraseña = e.target.value)}
+              />
+            </label>
+          </div>
+        </form>
+      </div>
+      <div className="row justify-content-center" role="navigation">
         <button
           className="botonAmarilloChiquito margen"
           onClick={() => handleCrear()}

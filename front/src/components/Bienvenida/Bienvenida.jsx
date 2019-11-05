@@ -15,9 +15,14 @@ function Bienvenida(props) {
   };
   return (
     <div className="centerPage container">
-      <img className="logo" src={Logo} alt="logo" />
-      <h1>¡Bienvenido a FastCab!</h1>
-      <div className="row justify-content-center">
+      <div role="navigation"></div>
+
+      <div role="contentinfo"></div>
+      <div role="banner">
+        <img className="logo" src={Logo} alt="logo" />
+        <h1>¡Bienvenido a FastCab!</h1>
+      </div>
+      <div role="main" className="row justify-content-center">
         <button
           className="botonAmarilloChiquito margen"
           onClick={() => handleIniciarSesion()}

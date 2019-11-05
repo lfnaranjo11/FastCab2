@@ -121,62 +121,69 @@ class DetalleServicio extends Component {
   render() {
     return (
       <div className="container">
-        <div className="row">
+        <div className="row" role="banner">
           <img className="fotoUsuario" src={userImage} alt="user icon" />
           <h1 className="nombreUsuario">{this.state.viaje.numero}</h1>
         </div>
-        <h2>{this.state.viaje.direccion}</h2>
-        <GoogleMap
-          lat={5.6984895}
-          lon={-74.03693240000001}
-          direccion={this.state.viaje.direccion}
-        />
-        <a
-          href={
-            "https://wa.me/" + this.state.viaje.numero.split("whatsapp:+")[1]
-          }
-        >
-          <div className="row">
-            <div className="circuloverde">
-              <img
-                className="iconoWhatsapp"
-                src={whatsappIcon}
-                alt="user icon"
-              />
+        <div role="main">
+          <h2>{this.state.viaje.direccion}</h2>
+          <GoogleMap
+            lat={5.6984895}
+            lon={-74.03693240000001}
+            direccion={this.state.viaje.direccion}
+          />
+
+          <a
+            href={
+              "https://wa.me/" + this.state.viaje.numero.split("whatsapp:+")[1]
+            }
+          >
+            <div className="row">
+              <div className="circuloverde">
+                <img
+                  className="iconoWhatsapp"
+                  src={whatsappIcon}
+                  alt="user icon"
+                />
+              </div>
+              <h3 className="textoBoton fakeH4Detail">
+                Enviar mensaje a Whatsapp
+              </h3>
             </div>
-            <h4 className="textoBoton">Enviar mensaje a Whatsapp</h4>
-          </div>
-        </a>
-        {this.state.viaje.estado === "confirmado" && (
+          </a>
+        </div>
+        <div role="navigation">
+          {this.state.viaje.estado === "confirmado" && (
+            <button
+              className="botonAmarillo margen"
+              onClick={() => this.handleLlegue(this.state.viaje)}
+            >
+              Ya llegué
+            </button>
+          )}
+          {this.state.viaje.estado === "esperando" && (
+            <button
+              className="botonAmarillo margen"
+              onClick={() => this.handleRecoger(this.state.viaje)}
+            >
+              Ya recogí al usuario
+            </button>
+          )}
+          {this.state.viaje.estado === "en curso" && (
+            <button
+              className="botonAmarillo margen"
+              onClick={() => this.handleTerminar(this.state.viaje)}
+            >
+              Terminar Recorrido
+            </button>
+          )}
           <button
-            className="botonAmarillo margen"
-            onClick={() => this.handleLlegue(this.state.viaje)}
+            className="botonGris margen"
+            onClick={() => this.handleCancelar(this.state.viaje)}
           >
-            Ya llegué
+            Cancelar Viaje
           </button>
-        )}
-        {this.state.viaje.estado === "esperando" && (
-          <button
-            className="botonAmarillo margen"
-            onClick={() => this.handleRecoger(this.state.viaje)}
-          >
-            Ya recogí al usuario
-          </button>
-        )}
-        {this.state.viaje.estado === "en curso" && (
-          <button
-            className="botonAmarillo margen"
-            onClick={() => this.handleTerminar(this.state.viaje)}
-          >
-            Terminar Recorrido
-          </button>
-        )}
-        <button
-          className="botonGris margen"
-          onClick={() => this.handleCancelar(this.state.viaje)}
-        >
-          Cancelar Viaje
-        </button>
+        </div>
       </div>
     );
   }

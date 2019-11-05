@@ -2,3 +2,9 @@
   margin-top: 20px;
   text-align: center;
 }
+.label {
+  /*padding: 6px;
+  display: inline-block;*/
+  width: 98%;
+  /*border: transparent;*/
+}

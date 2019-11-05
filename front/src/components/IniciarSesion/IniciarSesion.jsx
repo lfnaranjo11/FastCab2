@@ -38,29 +38,37 @@ function IniciarSesion(props) {
   };
   return (
     <div className="container">
-      <div className="titulo">
+      <div role="navigation"></div>
+      <div className="titulo" role="banner">
         <h1>Iniciar Sesion</h1>
       </div>
-      <form>
-        <div className="form-group">
-          <label>Nombre su Usuario</label>
-          <input
-            className="form-control"
-            placeholder="Ingrese el nombre de usuario"
-            onChange={e => (nombre = e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Contraseña</label>
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Ingrese su contraseña"
-            onChange={e => (contraseña = e.target.value)}
-          />
-        </div>
-      </form>
-      <div className="row justify-content-center">
+      <div role="main">
+        <form>
+          <div className="form-group">
+            <label className="label">
+              Nombre su Usuario
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Ingrese el nombre de usuario"
+                onChange={e => (nombre = e.target.value)}
+              />
+            </label>
+          </div>
+          <div className="form-group">
+            <label className="label">
+              Contraseña
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Ingrese su contraseña"
+                onChange={e => (contraseña = e.target.value)}
+              />
+            </label>
+          </div>
+        </form>
+      </div>
+      <div className="row justify-content-center" role="contentinfo">
         <button
           className="botonAmarilloChiquito margen"
           onClick={() => handleIniciarSesion()}

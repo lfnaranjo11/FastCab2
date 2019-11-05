@@ -4,6 +4,7 @@ import icon from "./user.svg";
 
 function NavBar(props) {
   let handleMiPerfil = () => {
+    console.log("hola");
     props.history.push({
       pathname: "/miperfil",
       conductor: props.location.conductor,
@@ -15,9 +16,11 @@ function NavBar(props) {
     <div className="navBar">
       <img
         onClick={handleMiPerfil}
+        onKeyPress={handleMiPerfil}
         className="iconoUser"
         src={icon}
         alt="user icon"
+        tabIndex="0"
       />
     </div>
   );

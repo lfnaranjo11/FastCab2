@@ -15,6 +15,7 @@ class MiPerfil extends Component {
   };
 
   goBack = () => {
+    console.log("going back");
     this.props.history.push({
       pathname: "/viajes",
       conductor: this.props.location.conductor,
@@ -25,18 +26,20 @@ class MiPerfil extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="navBar container-fluid">
+        <div className="navBar container-fluid" role="banner">
           <div className="row">
             <img
               onClick={this.goBack}
+              onKeyPress={this.goBack}
               className="flechaAtras"
               src={back}
               alt="back icon"
+              tabIndex="0"
             />
             <h1 className="tituloMiPerfil">Mi Perfil</h1>
           </div>
         </div>
-        <div className="container">
+        <div className="container" role="main">
           <div className="titulo2">
             <h1>{this.props.location.conductor.usuario}</h1>
             <h2>Conductor Registrado</h2>
