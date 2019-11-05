@@ -12,11 +12,12 @@ A webpage to make transportaiton easier than ever.
 
 **project objectives**
 
-* Create a  collaborative to-do list that allows to ask for help when needed in a chore, and that also recognize when the progress in a chore is so low that it needs to be reassigned to someone more commited
+* Create a fast way to ask for a cab or a vehicule. Using whatsapp or another known platform. Avoid the app acumulation
 
-* Make the access to the to-dos private so only members of a group can see it
+* Allow drivers to get a client avoiding conflicts with other drivers i.e getting the same travel for two of them.
 
-* Allow users to add their friends into a group they are part of and/or have created
+* Allow the user to get a safe cab, i.e verify the identity of the driver
+
 
 
 **Used  technologies**
@@ -83,10 +84,15 @@ git clone https://github.com/lfnaranjo11/FastCab2.git
 push to your heroku project
 ```
 
-3)create  new envirnment variable 
+3)create  new environment variables
+More info at: https://www.twilio.com/ and https://www.mongodb.com/cloud/atlas
+
 ```
 heroku config:set PORT=3001
-heroku config:set SECRET=WHATEVER
+heroku config:set SECRET=WHATEVER_YOU_WANNA_USE_TO_ENCRYPT
+heroku config:set TWILIO_AUTH_TOKEN=WHATEVER_TWILIO_GIVES_YOU_AS_TOKEN
+heroku config:set TWILIO_SID=WHATEVER_IS_YOUR:TWILIO_SID
+heroku config:set MONGODB_URI= WHATEVER_IS_THE_URI_OF_YOUR_MONGO_REPOSITORY
 
 ```
 
@@ -114,5 +120,5 @@ https://taxis-whatsapp.herokuapp.com/servicio
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This repository has the standard MIT license. You can find it [here.](https://github.com/mateodevia/datosGovViewer/blob/master/LICENSE)
+This repository has the standard MIT license. You can find it [here.](https://github.com/lfnaranjo11/FastCab2/blob/master/LICENSE)
 
