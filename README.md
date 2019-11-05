@@ -18,7 +18,20 @@ A webpage to make transportaiton easier than ever.
 
 * Allow the user to get a safe cab, i.e verify the identity of the driver
 
+**how to use the aplication as a client**
 
+ ![image](https://drive.google.com/uc?export=view&id=1FcnhotQu_t2KQTPJE3uXTBTkqL0rymq1)
+
+1)scan the previous QR code or write to +1415523886 join cap-previous
+
+ ![image](https://drive.google.com/uc?export=view&id=1KfowfZiPBVBJQLwbdv6mn1GhI4DAkF7N)
+ 
+ 2) Type anything to get help. or directly write Recogerme en [address you want to be pickup]
+ 
+ 
+ 3)Confirm your address and then wait for someone to pick you up 
+
+Open the 
 
 **Used  technologies**
 * html
