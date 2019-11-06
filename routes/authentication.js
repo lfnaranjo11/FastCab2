@@ -63,6 +63,7 @@ router.post("/login", (req, res) => {
   let usuario = req.body.usuario;
   let contraseña = req.body.contraseña;
   myMongoLib
+  //Para hallar el usuario no es necesario pasar la contraseña en el objeto
     .findUser({
       usuario: usuario,
       contraseña: contraseña
