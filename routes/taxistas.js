@@ -82,7 +82,7 @@ El taxista a cancelado tu viaje`,
     .catch(res.send(err));
 });
 
-router.get("/misviajes", jwt({ secret: process.env.SECRET }), (req, res) => {
+router.post("/misviajes", jwt({ secret: process.env.SECRET }), (req, res) => {
   let conductor = req.body.conductor;
   myMongoLib
     .getViajesAceptados(conductor)

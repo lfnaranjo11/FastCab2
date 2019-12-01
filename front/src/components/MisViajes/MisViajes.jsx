@@ -1,7 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import back from "./flecha.svg";
 
 export default function MisViajes(props) {
+  const [misViajes, setMisViajes] = useState([]);
+
+  useEffect(() => {
+    fetch("taxistas/misviajes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + props.location.token
+      },
+      body: JSON.stringify({ conductor: "Mateo" })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.err) {
+          console.log(JSON.stringify(data.err));
+        } else {
+          console.log(misViajes);
+          setMisViajes(data);
+        }
+      });
+  }, []);
+
   let goBack = () => {
     props.history.push({
       pathname: "/viajes",
