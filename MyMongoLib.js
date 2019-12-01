@@ -154,6 +154,25 @@ const MyMongoLib = function() {
     });
   };
 
+  // Viajes Aceptados--------------------------------------
+
+  exports.getViajesAceptados = conductor => {
+    return new Promise((resolve, reject) => {
+      client.connect(function(err, client) {
+        if (err !== null) {
+          reject(err);
+          return;
+        }
+        const db = client.db(dbName);
+        // Insert a single document
+        const testCol = db.collection("viajesAceptados");
+        return testCol
+          .find({ conductor: conductor })
+          .toArray()
+          .then(resolve);
+      });
+    });
+  };
   // Auth--------------------------------------------------
 
   exports.createUser = item => {
