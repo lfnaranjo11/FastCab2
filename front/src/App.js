@@ -5,13 +5,14 @@ import CrearCuenta from "./components/CrearCuenta/CrearCuenta";
 import ListaViajes from "./components/ListaViajes/ListaViajes";
 import DetalleServicio from "./components/DetalleServicio/DetalleServicio";
 import MiPerfil from "./components/MiPerfil/MiPerfil";
+import MisViajes from "./components/MisViajes/MisViajes";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 function App(props) {
   return (
     <React.Fragment>
-      <Router>
+      <BrowserRouter>
         <Switch>
           <Route
             exact
@@ -56,8 +57,14 @@ function App(props) {
               <MiPerfil history={props.history} location={props.location} />
             )}
           />
+          <Route
+            path="/misViajes"
+            component={props => (
+              <MisViajes history={props.history} location={props.location} />
+            )}
+          />
         </Switch>
-      </Router>
+      </BrowserRouter>
     </React.Fragment>
   );
 }

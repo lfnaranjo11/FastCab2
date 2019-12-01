@@ -1,63 +1,71 @@
 .botonAmarillo {
+  outline: none;
   background-color: #f7b334;
+  border: 1px solid #f7b334;
   color: #323433;
   font-size: 16px;
-  border: 1px solid #f7b334;
-  outline: none;
   cursor: pointer;
   padding: 8px 12px;
   font-weight: bold;
   width: 100%;
 }
 .botonGris {
+  outline: none;
   background-color: #323433;
   color: white;
   font-size: 16px;
   border: 1px solid #323433;
-  outline: none;
   cursor: pointer;
   padding: 8px 12px;
   font-weight: bold;
   width: 100%;
 }
 .botonAmarilloChiquito {
+  outline: none;
   background-color: #f7b334;
   color: #323433;
   font-size: 24px;
   border: 1px solid #f7b334;
-  outline: none;
   cursor: pointer;
   padding: 8px 12px;
   font-weight: bold;
 }
 .botonGrisChiquito {
+  outline: none;
   background-color: #323433;
   color: white;
   font-size: 24px;
   border: 1px solid #323433;
-  outline: none;
   cursor: pointer;
   padding: 8px 12px;
   font-weight: bold;
 }
 h1 {
+  font-size: 30px;
+  font-weight: bold;
   font-family: "Lora", serif;
 }
 h2 {
+  font-size: 25px;
+  font-weight: bold;
   font-family: "Lora", serif;
 }
 h3 {
+  font-size: 20px;
   font-family: "Lora", serif;
 }
 h4 {
+  font-size: 15px;
   font-family: "Lora", serif;
   color: #323433;
   font-weight: bold;
 }
 h5 {
+  font-size: 10px;
   font-family: "Lora", serif;
 }
 h6 {
+  font-size: 5px;
   font-family: "Lora", serif;
 }
 label {
@@ -68,4 +76,10 @@ input {
 }
 button {
   font-family: "Roboto", sans-serif;
+}
+
+.navBar {
+  width: 100%;
+  background-color: #323433;
+  z-index: 10;
 }

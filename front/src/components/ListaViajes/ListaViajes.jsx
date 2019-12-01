@@ -60,14 +60,12 @@ function ListaViajes(props) {
       <div role="navigation">
         <NavBar history={props.history} location={props.location} />
       </div>
-      <div className="tituloLista" role="banner">
-        <h1>Nuevas Solicitudes</h1>
-      </div>
+      <h1 className="tituloLista">Nuevas Solicitudes</h1>
       <div className="container" role="main">
         {viajesNuevos.map(viaje => (
           <div className="card shadow" key={viaje._id}>
             <div className="card-body">
-              <h1 className="card-title fakeH4">{viaje.direccion}</h1>
+              <h2 className="card-title">{viaje.direccion}</h2>
               <button
                 className="botonAmarillo"
                 onClick={() => handleAccept(viaje)}

@@ -15,7 +15,6 @@ class MiPerfil extends Component {
   };
 
   goBack = () => {
-    console.log("going back");
     this.props.history.push({
       pathname: "/viajes",
       conductor: this.props.location.conductor,
@@ -25,8 +24,8 @@ class MiPerfil extends Component {
 
   render() {
     return (
-      <React.Fragment>
-        <div className="navBar container-fluid" role="banner">
+      <div>
+        <div className="navBar shadow-lg" role="banner">
           <div className="row">
             <img
               onClick={this.goBack}
@@ -61,14 +60,11 @@ class MiPerfil extends Component {
             <h3>Placa</h3>
             <label>{this.props.location.conductor.placa}</label>
           </div>
-          <button
-            className="botonAmarillo margen"
-            onClick={this.handleCerrarSesion}
-          >
+          <button className="botonAmarillo" onClick={this.handleCerrarSesion}>
             Cerrar Sesión
           </button>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }

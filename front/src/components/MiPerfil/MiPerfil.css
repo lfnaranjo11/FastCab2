@@ -3,9 +3,13 @@
   padding: 2vh;
   margin: 0;
   color: white;
+  width: 100%;
+  text-align: center;
 }
 
 .flechaAtras {
-  height: 9vh;
-  padding: 2vh;
+  position: absolute;
+  margin: 3vh;
+  margin-left: 5vh;
+  height: 3vh;
 }
