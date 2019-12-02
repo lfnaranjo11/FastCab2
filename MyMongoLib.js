@@ -162,7 +162,7 @@ const MyMongoLib = function() {
         promise.then(res => {
           const col2 = db.collection("viajesAceptados");
           col2.updateOne(
-            { viaje: o_id, conductor: conductor },
+            { viaje: o_id, conductor: conductor, estado: "aceptado" },
             { $set: { estado: "terminado" } }
           );
           resolve(res);
