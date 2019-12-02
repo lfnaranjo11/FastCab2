@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "../NavBar/NavBar";
+import GoogleMapTrack from "../GoogleMapTrack/GoogleMapTrack";
 import "./ListaViajes.css";
 
 function ListaViajes(props) {
@@ -62,6 +63,7 @@ function ListaViajes(props) {
       <div role="navigation">
         <NavBar history={props.history} location={props.location} />
       </div>
+      <GoogleMapTrack />
       <h1 className="tituloLista">Nuevas Solicitudes</h1>
       <div className="container" role="main">
         {viajesNuevos.map(viaje => (
