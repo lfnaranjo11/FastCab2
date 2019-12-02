@@ -89,7 +89,7 @@ const MyMongoLib = function() {
           { $set: { estado: "confirmado" } }
         );
         promise.then(res => {
-          const col2 = db.collection("viajes");
+          const col2 = db.collection("viajesAceptados");
           let promise = col2.insertOne({
             usuario: viaje.numero,
             conductor: "TO DO",
