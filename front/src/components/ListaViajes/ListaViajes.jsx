@@ -63,7 +63,7 @@ function ListaViajes(props) {
       <h1 className="tituloLista">Nuevas Solicitudes</h1>
       <div className="container" role="main">
         {viajesNuevos.map(viaje => (
-          <div className="card shadow" key={viaje._id}>
+          <div className="card shadow viajeSolicitado" key={viaje._id}>
             <div className="card-body">
               <h2 className="card-title">{viaje.direccion}</h2>
               <button

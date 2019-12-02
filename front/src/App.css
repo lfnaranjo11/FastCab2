@@ -53,6 +53,7 @@ h2 {
 h3 {
   font-size: 20px;
   font-family: "Lora", serif;
+  font-weight: bold;
 }
 h4 {
   font-size: 15px;
@@ -63,10 +64,16 @@ h4 {
 h5 {
   font-size: 10px;
   font-family: "Lora", serif;
+  font-weight: bold;
 }
 h6 {
   font-size: 5px;
   font-family: "Lora", serif;
+  font-weight: bold;
+}
+p {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
 }
 label {
   font-family: "Roboto", sans-serif;

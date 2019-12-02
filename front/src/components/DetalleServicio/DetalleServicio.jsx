@@ -120,10 +120,12 @@ class DetalleServicio extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container-fluid">
         <div className="row" role="banner">
           <img className="fotoUsuario" src={userImage} alt="user icon" />
-          <h1 className="nombreUsuario">{this.state.viaje.numero}</h1>
+          <h1 className="nombreUsuario">
+            {this.state.viaje.numero.split(":")[1]}
+          </h1>
         </div>
         <div role="main">
           <h2>{this.state.viaje.direccion}</h2>
@@ -146,16 +148,12 @@ class DetalleServicio extends Component {
                   alt="user icon"
                 />
               </div>
-              <h3 className="textoBoton fakeH4Detail">
-                Enviar mensaje a Whatsapp
-              </h3>
+              <p className="textoBoton">Enviar mensaje a Whatsapp</p>
             </div>
           </a>
-        </div>
-        <div role="navigation">
           {this.state.viaje.estado === "confirmado" && (
             <button
-              className="botonAmarillo margen"
+              className="botonAmarillo margenAbajo"
               onClick={() => this.handleLlegue(this.state.viaje)}
             >
               Ya llegué
@@ -163,7 +161,7 @@ class DetalleServicio extends Component {
           )}
           {this.state.viaje.estado === "esperando" && (
             <button
-              className="botonAmarillo margen"
+              className="botonAmarillo margenAbajo"
               onClick={() => this.handleRecoger(this.state.viaje)}
             >
               Ya recogí al usuario
@@ -171,14 +169,14 @@ class DetalleServicio extends Component {
           )}
           {this.state.viaje.estado === "en curso" && (
             <button
-              className="botonAmarillo margen"
+              className="botonAmarillo margenAbajo"
               onClick={() => this.handleTerminar(this.state.viaje)}
             >
               Terminar Recorrido
             </button>
           )}
           <button
-            className="botonGris margen"
+            className="botonGris margenAbajo"
             onClick={() => this.handleCancelar(this.state.viaje)}
           >
             Cancelar Viaje

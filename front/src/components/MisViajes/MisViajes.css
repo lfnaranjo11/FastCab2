@@ -1,0 +1,36 @@
+.contenedorMisViajes {
+  margin-top: 12vh;
+}
+
+.miViaje {
+  margin-top: 10px;
+}
+
+.canceladoTag {
+  margin-top: 10px;
+  background-color: red;
+  color: white;
+  width: 80px;
+  height: 25px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.terminadoTag {
+  margin-top: 10px;
+  background-color: rgb(68, 68, 184);
+  color: white;
+  width: 80px;
+  height: 25px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.titu {
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+p {
+  margin-bottom: 0px;
+}
