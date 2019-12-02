@@ -55,7 +55,7 @@ class GoogleMapTrack extends Component {
         Authorization: "Bearer " + this.props.location.token
       }
     })
-      .then(res => {})
+      .then(res => console.log(res))
       .catch(error => console.log("Error:", error));
   };
 

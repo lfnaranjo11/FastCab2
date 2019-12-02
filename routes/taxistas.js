@@ -100,7 +100,7 @@ router.post("/position", jwt({ secret: process.env.SECRET }), (req, res) => {
   let conductor = req.body.conductor;
   myMongoLib
     .updateLocation(conductor, lat, lon)
-    .then(res.send("ok"))
+    .then(res.send("oki"))
     .catch(err =>
       res.send({ err: err, msg: "error al actualizar la ubicacion" })
     );
