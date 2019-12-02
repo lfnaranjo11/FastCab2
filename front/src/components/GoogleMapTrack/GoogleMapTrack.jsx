@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
+import MapMarker from "./MapMarker";
 
 class GoogleMapTrack extends Component {
   constructor(props) {
@@ -11,25 +12,30 @@ class GoogleMapTrack extends Component {
   }
   renderMarkers(map, maps) {
     if (navigator.geolocation) {
+      let marker = null;
       navigator.geolocation.getCurrentPosition(position => {
         this.setState({
           lat: position.coords.latitude,
           lon: position.coords.longitude
         });
+        /**
         new maps.Marker({
           position: { lat: this.state.lat, lng: this.state.lon },
           map,
           title: "Hello World!"
-        });
+        });*/
         map.panTo({ lat: this.state.lat, lng: this.state.lon });
       });
+
       navigator.geolocation.watchPosition(
         pos => {
-          alert(pos);
+          let lat = pos.coords.latitude;
+          let lon = pos.coords.longitude;
           this.setState({
             lat: pos.coords.latitude,
             lon: pos.coords.longitude
           });
+          map.panTo({ lat: this.state.lat, lng: this.state.lon });
         },
         err => {
           console.log(err);
@@ -55,7 +61,9 @@ class GoogleMapTrack extends Component {
           defaultZoom={17}
           onGoogleApiLoaded={({ map, maps }) => this.renderMarkers(map, maps)}
           yesIWantToUseGoogleMapApiInternals={true}
-        ></GoogleMapReact>
+        >
+          <MapMarker lat={this.state.lat} lng={this.state.lon} />
+        </GoogleMapReact>
       </div>
     );
   }
