@@ -90,6 +90,8 @@ class DetalleServicio extends Component {
   };
 
   handleCancelar = viaje => {
+    console.log(this.props.location.conductor);
+
     fetch("taxistas/cancelar", {
       method: "POST",
       body: JSON.stringify({
