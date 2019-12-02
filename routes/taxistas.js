@@ -94,4 +94,16 @@ router.post("/misviajes", jwt({ secret: process.env.SECRET }), (req, res) => {
     );
 });
 
+router.post("/position", jwt({ secret: process.env.SECRET }), (req, res) => {
+  let lat = req.body.lat;
+  let lon = req.body.lon;
+  let conductor = req.body.conductor;
+  myMongoLib
+    .updateLocation(conductor, lat, lon)
+    .then(res.send("ok"))
+    .catch(err =>
+      res.send({ err: err, msg: "error al actualizar la ubicacion" })
+    );
+});
+
 module.exports = router;

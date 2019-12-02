@@ -18,12 +18,6 @@ class GoogleMapTrack extends Component {
           lat: position.coords.latitude,
           lon: position.coords.longitude
         });
-        /**
-        new maps.Marker({
-          position: { lat: this.state.lat, lng: this.state.lon },
-          map,
-          title: "Hello World!"
-        });*/
         map.panTo({ lat: this.state.lat, lng: this.state.lon });
       });
 
@@ -36,6 +30,7 @@ class GoogleMapTrack extends Component {
             lon: lon
           });
           map.panTo({ lat: this.state.lat, lng: this.state.lon });
+          this.saveCurrentLocation();
         },
         err => {
           console.log(err);
@@ -47,14 +42,31 @@ class GoogleMapTrack extends Component {
     }
   }
 
+  saveCurrentLocation = () => {
+    fetch("taxistas/position", {
+      method: "POST",
+      body: JSON.stringify({
+        lat: this.state.lat,
+        lon: this.state.lon,
+        conductor: this.props.location.conductor
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + this.props.location.token
+      }
+    })
+      .then(res => {})
+      .catch(error => console.log("Error:", error));
+  };
+
   render() {
     return (
       // Important! Always set the container height explicitly
       <div
         style={{
-          height: "50vh",
+          height: "85vh",
           width: "100%",
-          alt: "google map of the user location"
+          alt: "google map of that tracks the current location"
         }}
         alt="lo que sea"
       >

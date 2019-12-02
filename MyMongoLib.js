@@ -218,7 +218,7 @@ const MyMongoLib = function() {
       });
     });
   };
-  // Auth--------------------------------------------------
+  // Users--------------------------------------------------
 
   exports.createUser = item => {
     return new Promise((resolve, reject) => {
@@ -237,6 +237,27 @@ const MyMongoLib = function() {
       });
     });
   };
+
+  exports.updateLocation = (conductor, lat, lon) => {
+    return new Promise((resolve, reject) => {
+      client.connect(function(err, client) {
+        if (err !== null) {
+          reject(err);
+          return;
+        }
+        const db = client.db(dbName);
+        const testCol = db.collection("usuarios");
+        let o_id = new ObjectID(conductor._id);
+        let promise = testCol.updateOne(
+          { _id: o_id },
+          { $set: { lat: lat, lon: lon } }
+        );
+        promise.then(resolve(res));
+        promise.catch(err => reject(err));
+      });
+    });
+  };
+
   exports.findUser = user =>
     new Promise((resolve, reject) => {
       client.connect(function(err, client) {
