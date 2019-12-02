@@ -250,7 +250,10 @@ const MyMongoLib = function() {
           { usuario: conductor.usuario },
           { $set: { lat: lat, lon: lon } }
         );
-        promise.then(resolve);
+        promise.then(() => {
+          client.close();
+          return resolve;
+        });
         promise.catch(err => reject(err));
       });
     });
