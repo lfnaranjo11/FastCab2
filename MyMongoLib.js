@@ -65,7 +65,6 @@ const MyMongoLib = function() {
           return;
         }
         const db = client.db(dbName);
-        // Insert a single document
         const testCol = db.collection("viajes");
         let promise = testCol.insertOne(item);
         promise.then(res => resolve(res));
