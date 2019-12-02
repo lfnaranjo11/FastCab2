@@ -181,7 +181,10 @@ const MyMongoLib = function() {
         );
         promise.then(res => {
           const col2 = db.collection("viajesAceptados");
-          col2.updateOne({ viaje: o_id }, { $set: { estado: "cancelado" } });
+          col2.updateOne(
+            { viaje: o_id, conductor: conductor },
+            { $set: { estado: "cancelado" } }
+          );
           resolve(res);
         });
         promise.catch(err => reject(err));
