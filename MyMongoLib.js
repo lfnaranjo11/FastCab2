@@ -88,7 +88,18 @@ const MyMongoLib = function() {
           { _id: o_id },
           { $set: { estado: "confirmado" } }
         );
-        promise.then(res => resolve(res));
+        promise.then(res => {
+          const col2 = db.collection("viajes");
+          let promise = col2.insertOne({
+            usuario: viaje.numero,
+            conductor: "TO DO",
+            ubicacion: viaje.ubicacion,
+            estado: "aceptado",
+            fecha: "01/12/2019",
+            viaje: o_id
+          });
+          resolve(res);
+        });
         promise.catch(err => reject(err));
       });
     });
