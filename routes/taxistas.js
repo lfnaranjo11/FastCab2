@@ -77,7 +77,7 @@ El taxista a cancelado tu viaje`,
     viaje.numero
   );
   myMongoLib
-    .terminar(viaje)
+    .cancelar(viaje, conductor)
     .then(res.send("ok"))
     .catch(res.send(err));
 });

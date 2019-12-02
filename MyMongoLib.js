@@ -165,6 +165,33 @@ const MyMongoLib = function() {
     });
   };
 
+  exports.cancelar = (viaje, conductor) => {
+    return new Promise((resolve, reject) => {
+      client.connect(function(err, client) {
+        if (err !== null) {
+          reject(err);
+          return;
+        }
+        const db = client.db(dbName);
+        const testCol = db.collection("viajes");
+        let o_id = new ObjectID(viaje._id);
+        let promise = testCol.updateOne(
+          { _id: o_id },
+          { $set: { estado: "en espera" } }
+        );
+        promise.then(res => {
+          const col2 = db.collection("viajesAceptados");
+          col2.updateOne(
+            { viaje: o_id, conductor: conductor },
+            { $set: { estado: "en espera" } }
+          );
+          resolve(res);
+        });
+        promise.catch(err => reject(err));
+      });
+    });
+  };
+
   // Viajes Aceptados--------------------------------------
 
   exports.getViajesAceptados = conductor => {
