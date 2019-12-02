@@ -252,7 +252,7 @@ const MyMongoLib = function() {
           { _id: o_id },
           { $set: { lat: lat, lon: lon } }
         );
-        promise.then(resolve(res));
+        promise.then(resolve);
         promise.catch(err => reject(err));
       });
     });
