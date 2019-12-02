@@ -25,6 +25,7 @@ class GoogleMapTrack extends Component {
       });
       navigator.geolocation.watchPosition(
         pos => {
+          alert(pos);
           this.setState({
             lat: pos.coords.latitude,
             lon: pos.coords.longitude
