@@ -247,9 +247,8 @@ const MyMongoLib = function() {
         }
         const db = client.db(dbName);
         const testCol = db.collection("usuarios");
-        let o_id = new ObjectID(conductor._id);
         let promise = testCol.updateOne(
-          { _id: o_id },
+          { usuario: conductor.usuario },
           { $set: { lat: lat, lon: lon } }
         );
         promise.then(resolve);
