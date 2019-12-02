@@ -21,7 +21,7 @@ Modelo del carro: ${conductor.modelo}`,
     viaje.numero
   );
   myMongoLib
-    .acceptViaje(viaje)
+    .acceptViaje(viaje, conductor.usuario)
     .then(res.send("ok"))
     .catch(res.send(err));
 });

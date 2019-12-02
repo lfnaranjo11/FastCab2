@@ -74,7 +74,7 @@ const MyMongoLib = function() {
     });
   };
 
-  exports.acceptViaje = viaje => {
+  exports.acceptViaje = (viaje, conductor) => {
     return new Promise((resolve, reject) => {
       client.connect(function(err, client) {
         if (err !== null) {
@@ -92,8 +92,8 @@ const MyMongoLib = function() {
           const col2 = db.collection("viajesAceptados");
           let promise = col2.insertOne({
             usuario: viaje.numero,
-            conductor: "TO DO",
-            ubicacion: viaje.ubicacion,
+            conductor: conductor,
+            ubicacion: viaje.direccion,
             estado: "aceptado",
             fecha: "01/12/2019",
             viaje: o_id

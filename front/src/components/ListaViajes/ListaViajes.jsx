@@ -31,6 +31,8 @@ function ListaViajes(props) {
   }, []);
 
   let handleAccept = viaje => {
+    console.log(viaje);
+
     let bod = JSON.stringify({
       viaje: viaje,
       conductor: props.location.conductor
