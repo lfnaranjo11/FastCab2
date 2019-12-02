@@ -145,7 +145,7 @@ const MyMongoLib = function() {
     });
   };
 
-  exports.terminar = viaje => {
+  exports.terminar = (viaje, conductor) => {
     return new Promise((resolve, reject) => {
       client.connect(function(err, client) {
         if (err !== null) {
@@ -159,7 +159,14 @@ const MyMongoLib = function() {
           { _id: o_id },
           { $set: { estado: "terminado" } }
         );
-        promise.then(res => resolve(res));
+        promise.then(res => {
+          const col2 = db.collection("viajesAceptados");
+          col2.updateOne(
+            { viaje: o_id, conductor: conductor },
+            { $set: { estado: "terminado" } }
+          );
+          resolve(res);
+        });
         promise.catch(err => reject(err));
       });
     });

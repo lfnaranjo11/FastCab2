@@ -63,7 +63,7 @@ router.post("/terminar", jwt({ secret: process.env.SECRET }), (req, res) => {
     viaje.numero
   );
   myMongoLib
-    .terminar(viaje)
+    .terminar(viaje, conductor.usuario)
     .then(res.send("ok"))
     .catch(res.send(err));
 });
