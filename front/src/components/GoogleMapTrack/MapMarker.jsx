@@ -1,5 +1,6 @@
 import React from "react";
-import ForkTKM from "./taxi.svg";
+import taxi from "./taxi.svg";
+import "./Marker.css";
 
 class MapMarker extends React.Component {
   constructor(props) {
@@ -8,9 +9,10 @@ class MapMarker extends React.Component {
 
   render() {
     return (
-      <div>
-        <img src={ForkTKM} height="50rem" width="40rem" alt="map marker" />
-      </div>
+      <div
+        className="marker"
+        style={{ backgroundColor: "#f7b334", cursor: "pointer" }}
+      />
     );
   }
 }

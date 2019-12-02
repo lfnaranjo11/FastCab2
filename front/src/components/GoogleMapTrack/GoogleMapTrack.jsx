@@ -32,13 +32,16 @@ class GoogleMapTrack extends Component {
           let lat = pos.coords.latitude;
           let lon = pos.coords.longitude;
           this.setState({
-            lat: pos.coords.latitude,
-            lon: pos.coords.longitude
+            lat: lat,
+            lon: lon
           });
           map.panTo({ lat: this.state.lat, lng: this.state.lon });
         },
         err => {
           console.log(err);
+        },
+        {
+          enableHighAccuracy: true
         }
       );
     }
