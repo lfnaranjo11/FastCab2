@@ -251,10 +251,10 @@ const MyMongoLib = function() {
           { $set: { lat: lat, lon: lon } }
         );
         promise.then(() => {
-          client.close();
           return resolve;
         });
         promise.catch(err => reject(err));
+        client.close();
       });
     });
   };
