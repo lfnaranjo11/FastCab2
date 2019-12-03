@@ -35,6 +35,7 @@ const MyMongoLib = function() {
           .find({ estado: "en espera" })
           .toArray()
           .then(resolve);
+        client.close();
       });
     });
 
@@ -69,6 +70,7 @@ const MyMongoLib = function() {
         let promise = testCol.insertOne(item);
         promise.then(res => resolve(res));
         promise.catch(err => reject(err));
+        client.close();
       });
     });
   };
@@ -100,6 +102,7 @@ const MyMongoLib = function() {
           resolve(res);
         });
         promise.catch(err => reject(err));
+        client.close();
       });
     });
   };
@@ -120,6 +123,7 @@ const MyMongoLib = function() {
         );
         promise.then(res => resolve(res));
         promise.catch(err => reject(err));
+        client.close();
       });
     });
   };
@@ -140,6 +144,7 @@ const MyMongoLib = function() {
         );
         promise.then(res => resolve(res));
         promise.catch(err => reject(err));
+        client.close();
       });
     });
   };
@@ -167,6 +172,7 @@ const MyMongoLib = function() {
           resolve(res);
         });
         promise.catch(err => reject(err));
+        client.close();
       });
     });
   };
@@ -194,6 +200,7 @@ const MyMongoLib = function() {
           resolve(res);
         });
         promise.catch(err => reject(err));
+        client.close();
       });
     });
   };
@@ -214,6 +221,7 @@ const MyMongoLib = function() {
           .find({ conductor: conductor })
           .toArray()
           .then(resolve);
+        client.close();
       });
     });
   };
@@ -233,6 +241,7 @@ const MyMongoLib = function() {
           .insertOne(item)
           .then(resolve)
           .catch(err => reject(err));
+        client.close();
       });
     });
   };
@@ -269,6 +278,7 @@ const MyMongoLib = function() {
         const db = client.db(dbName);
         const testCol = db.collection("usuarios");
         return testCol.findOne({ usuario: user.usuario }).then(resolve);
+        client.close();
       });
     });
 
