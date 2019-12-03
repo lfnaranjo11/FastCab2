@@ -217,7 +217,7 @@ const MyMongoLib = function() {
       });
     });
   };
-  // Users--------------------------------------------------
+  // Users --------------------------------------------------
 
   exports.createUser = item => {
     return new Promise((resolve, reject) => {
