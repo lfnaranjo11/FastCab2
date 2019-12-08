@@ -64,7 +64,7 @@ class GoogleMapTrack extends Component {
       // Important! Always set the container height explicitly
       <div
         style={{
-          height: "85vh",
+          height: "70vh",
           width: "100%",
           alt: "google map of that tracks the current location"
         }}
