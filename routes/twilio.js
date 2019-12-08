@@ -22,7 +22,7 @@ router.post("/newmessage", (req, res) => {
 
     for (i = 3; i < palabras.length; i++) {
       direccion = direccion + " " + palabras[i];
-      direccion2 = direccion + "%20" + palabras[i];
+      direccion2 = direccion2 + "%20" + palabras[i];
     }
     clientesEnEspera[usuario] = {
       timestamp: new Date().getMilliseconds(),
