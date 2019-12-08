@@ -70,7 +70,7 @@ class SimpleMap extends Component {
       body: JSON.stringify({
         lat: this.state.lat,
         lon: this.state.lon,
-        conductor: this.props.location.conductor
+        conductor: this.props.conductor
       }),
       headers: {
         "Content-Type": "application/json",
