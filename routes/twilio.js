@@ -28,7 +28,9 @@ router.post("/newmessage", (req, res) => {
     };
 
     myWaLib.respondToMessage(
-      "¿La dirección en la que quieres que te recojan es *" + direccion + "*?",
+      `¿La dirección en la que quieres que te recojan es *${direccion}*?
+Puedes verificarla en el siquiente enlace:
+https://pick-me-here.herokuapp.com/?direccion=${direccion}`,
       res
     );
   } else if (clientesEnEspera[usuario] && newMessage.toLowerCase() === "si") {
