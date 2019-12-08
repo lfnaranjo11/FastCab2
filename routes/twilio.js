@@ -17,7 +17,7 @@ router.post("/newmessage", (req, res) => {
     palabras[1] === "en" &&
     palabras[2]
   ) {
-    let direccion = palabras[2];
+    let direccion = newMessage.splt("Recogerme en ")[1];
 
     for (i = 3; i < palabras.length; i++) {
       direccion = direccion + " " + palabras[i];
