@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.1b90c1ac.chunk.css",
-    "main.js": "/static/js/main.5e670efa.chunk.js",
-    "main.js.map": "/static/js/main.5e670efa.chunk.js.map",
+    "main.js": "/static/js/main.7235e1d4.chunk.js",
+    "main.js.map": "/static/js/main.7235e1d4.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.7139b951.js",
     "runtime-main.js.map": "/static/js/runtime-main.7139b951.js.map",
     "static/js/2.671311ed.chunk.js": "/static/js/2.671311ed.chunk.js",
     "static/js/2.671311ed.chunk.js.map": "/static/js/2.671311ed.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.03cbd222b528c8512cf7c25faa40c420.js": "/precache-manifest.03cbd222b528c8512cf7c25faa40c420.js",
+    "precache-manifest.c847b4cad11ee2ba1ded5460e4bc66c3.js": "/precache-manifest.c847b4cad11ee2ba1ded5460e4bc66c3.js",
     "service-worker.js": "/service-worker.js",
     "static/css/main.1b90c1ac.chunk.css.map": "/static/css/main.1b90c1ac.chunk.css.map",
     "static/media/flecha.svg": "/static/media/flecha.6d79aeff.svg",
@@ -21,6 +21,6 @@
     "static/js/runtime-main.7139b951.js",
     "static/js/2.671311ed.chunk.js",
     "static/css/main.1b90c1ac.chunk.css",
-    "static/js/main.5e670efa.chunk.js"
+    "static/js/main.7235e1d4.chunk.js"
   ]
 }
