@@ -13,7 +13,7 @@ router.post("/newmessage", (req, res) => {
   const usuario = req.body.From;
   if (
     (clientesEnEspera[usuario] &&
-      clientesEnEspera[usuario].estado !== "aceptado") ||
+      clientesEnEspera[usuario].estado === "en espera") ||
     !clientesEnEspera[usuario]
   ) {
     let palabras = newMessage.split(" ");
@@ -69,7 +69,7 @@ https://pick-me-here.herokuapp.com/?direccion=${direccion2}`,
         `*¡Bienvenido a FastCab!*
 
 Para pedir un taxi porfavor escribe:
-*Recogerme en* seguido de tu a ${usuario} dirección`,
+*Recogerme en* seguido de tu dirección`,
         res
       );
     }
@@ -89,7 +89,7 @@ router.post("/accept", jwt({ secret: process.env.SECRET }), (req, res) => {
     `*¡Tu viaje hacia ${viaje.direccion} ha sido confirmado!*
 
 *Información de tu conductor:*
-Nombre: ${conductor.usuario}
+Nombre: ${clientesEnEspera[viaje.numero].estado}
 Numero: ${conductor.numero}
 Placa del carro: ${conductor.placa}
 Modelo del carro: ${conductor.modelo}
