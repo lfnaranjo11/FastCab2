@@ -52,6 +52,7 @@ class SimpleMap extends Component {
             lon: lon
           });
           map.panTo({ lat: this.state.lat, lng: this.state.lon });
+          this.saveCurrentLocation();
         },
         err => {
           console.log(err);
@@ -62,6 +63,23 @@ class SimpleMap extends Component {
       );
     }
   }
+
+  saveCurrentLocation = () => {
+    fetch("taxistas/position", {
+      method: "POST",
+      body: JSON.stringify({
+        lat: this.state.lat,
+        lon: this.state.lon,
+        conductor: this.props.location.conductor
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + this.props.location.token
+      }
+    })
+      .then(res => {})
+      .catch(error => console.log("Error:", error));
+  };
 
   render() {
     return (
