@@ -27,10 +27,12 @@ router.post("/newmessage", (req, res) => {
       direccion: direccion
     };
 
+    let direccion2 = direccion.replace(" ", "%20");
+
     myWaLib.respondToMessage(
       `¿La dirección en la que quieres que te recojan es *${direccion}*?
 Puedes verificarla en el siquiente enlace:
-https://pick-me-here.herokuapp.com/?direccion=${direccion}`,
+https://pick-me-here.herokuapp.com/?direccion=${direccion2}`,
       res
     );
   } else if (clientesEnEspera[usuario] && newMessage.toLowerCase() === "si") {
