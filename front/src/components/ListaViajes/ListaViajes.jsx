@@ -53,7 +53,6 @@ function ListaViajes(props) {
       .catch(error => console.log("Error:", error));
     viaje.estado = "confirmado";
     console.log("se va a desuscribir", id);
-
     navigator.geolocation.clearWatch(id);
     props.history.push({
       pathname: "/servicio",
@@ -71,7 +70,7 @@ function ListaViajes(props) {
   return (
     <React.Fragment>
       <div role="navigation">
-        <NavBar history={props.history} location={props.location} />
+        <NavBar history={props.history} location={props.location} id={id} />
       </div>
       <GoogleMapTrack
         history={props.history}

@@ -7,6 +7,8 @@ function NavBar(props) {
   let [selected, setSelected] = useState("");
 
   let goToMisViajes = () => {
+    console.log("se va a desuscribir", props.id);
+    navigator.geolocation.clearWatch(props.id);
     props.history.push({
       pathname: "/misViajes",
       conductor: props.location.conductor,
@@ -15,6 +17,8 @@ function NavBar(props) {
   };
 
   let handleMiPerfil = () => {
+    console.log("se va a desuscribir", props.id);
+    navigator.geolocation.clearWatch(props.id);
     props.history.push({
       pathname: "/miperfil",
       conductor: props.location.conductor,
