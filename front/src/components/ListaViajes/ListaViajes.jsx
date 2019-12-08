@@ -63,6 +63,7 @@ function ListaViajes(props) {
       <div role="navigation">
         <NavBar history={props.history} location={props.location} />
       </div>
+      <GoogleMapTrack history={props.history} location={props.location} />
       <h1 className="tituloLista">Nuevas Solicitudes</h1>
       <div className="container" role="main">
         {viajesNuevos.map(viaje => (
