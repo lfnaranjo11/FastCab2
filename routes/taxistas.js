@@ -69,7 +69,7 @@ https://pick-me-here.herokuapp.com/?direccion=${direccion2}`,
         `*¡Bienvenido a FastCab!*
 
 Para pedir un taxi porfavor escribe:
-*Recogerme en* seguido de tu dirección`,
+*Recogerme en* seguido de tu dirección ${usuario}`,
         res
       );
     }
@@ -89,7 +89,7 @@ router.post("/accept", jwt({ secret: process.env.SECRET }), (req, res) => {
     `*¡Tu viaje hacia ${viaje.direccion} ha sido confirmado!*
 
 *Información de tu conductor:*
-Nombre: ${clientesEnEspera[viaje.numero]}
+Nombre: ${conductor.nombre}
 Numero: ${conductor.numero}
 Placa del carro: ${conductor.placa}
 Modelo del carro: ${conductor.modelo}
