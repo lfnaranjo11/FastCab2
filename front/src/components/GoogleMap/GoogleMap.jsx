@@ -52,7 +52,7 @@ class SimpleMap extends Component {
             lon: lon
           });
           map.panTo({ lat: this.state.lat, lng: this.state.lon });
-          this.saveCurrentLocation();
+          this.saveCurrentLocation(pos.coords.latitude, pos.coords.longitude);
         },
         err => {
           console.log(err);
@@ -64,12 +64,12 @@ class SimpleMap extends Component {
     }
   }
 
-  saveCurrentLocation = () => {
+  saveCurrentLocation = (pLat, pLon) => {
     fetch("taxistas/position", {
       method: "POST",
       body: JSON.stringify({
-        lat: this.state.lat,
-        lon: this.state.lon,
+        lat: pLat,
+        lon: pLon,
         conductor: this.props.conductor
       }),
       headers: {
