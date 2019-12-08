@@ -43,7 +43,7 @@ class SimpleMap extends Component {
           lon: position.coords.longitude
         });
       });
-      navigator.geolocation.watchPosition(
+      let id = navigator.geolocation.watchPosition(
         pos => {
           let lat = pos.coords.latitude;
           let lon = pos.coords.longitude;
@@ -61,6 +61,7 @@ class SimpleMap extends Component {
           enableHighAccuracy: true
         }
       );
+      this.props.setId(id);
     }
   }
 

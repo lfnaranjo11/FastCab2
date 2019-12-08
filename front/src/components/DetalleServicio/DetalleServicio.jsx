@@ -8,7 +8,8 @@ class DetalleServicio extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      viaje: props.location.viaje
+      viaje: props.location.viaje,
+      id: 0
     };
   }
 
@@ -51,6 +52,8 @@ class DetalleServicio extends Component {
   };
 
   handleTerminar = viaje => {
+    console.log("se va a desuscribir", this.state.id);
+    navigator.geolocation.clearWatch(this.state.id);
     fetch("taxistas/terminar", {
       method: "POST", // or 'PUT'
       body: JSON.stringify({
@@ -75,6 +78,8 @@ class DetalleServicio extends Component {
   };
 
   handleCancelar = viaje => {
+    console.log("se va a desuscribir", this.state.id);
+    navigator.geolocation.clearWatch(this.state.id);
     fetch("taxistas/cancelar", {
       method: "POST",
       body: JSON.stringify({
@@ -98,6 +103,11 @@ class DetalleServicio extends Component {
     });
   };
 
+  handleIdChange = id => {
+    console.log("ID", id);
+    this.setState({ id: id });
+  };
+
   render() {
     return (
       <div className="container-fluid">
@@ -115,6 +125,7 @@ class DetalleServicio extends Component {
             direccion={this.state.viaje.direccion}
             conductor={this.props.location.conductor}
             token={this.props.location.token}
+            setId={this.handleIdChange}
           />
 
           <a

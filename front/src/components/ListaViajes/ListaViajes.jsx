@@ -63,7 +63,7 @@ function ListaViajes(props) {
     });
   };
 
-  let unsuscribe = id => {
+  let handleIdChange = id => {
     console.log("ID", id);
     setId(id);
   };
@@ -76,7 +76,7 @@ function ListaViajes(props) {
       <GoogleMapTrack
         history={props.history}
         location={props.location}
-        setId={unsuscribe}
+        setId={handleIdChange}
       />
       <h1 className="tituloLista">Nuevas Solicitudes</h1>
       <div className="container" role="main">
