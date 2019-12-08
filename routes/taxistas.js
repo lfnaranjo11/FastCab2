@@ -89,7 +89,7 @@ router.post("/accept", jwt({ secret: process.env.SECRET }), (req, res) => {
     `*¡Tu viaje hacia ${viaje.direccion} ha sido confirmado!*
 
 *Información de tu conductor:*
-Nombre: ${conductor.nombre}
+Nombre: ${conductor.usuario}
 Numero: ${conductor.numero}
 Placa del carro: ${conductor.placa}
 Modelo del carro: ${conductor.modelo}
