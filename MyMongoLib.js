@@ -34,8 +34,10 @@ const MyMongoLib = function() {
         return testCol
           .find({ estado: "en espera" })
           .toArray()
-          .then(resolve);
-        client.close();
+          .then(() => {
+            client.close();
+            resolve();
+          });
       });
     });
 
@@ -68,9 +70,11 @@ const MyMongoLib = function() {
         const db = client.db(dbName);
         const testCol = db.collection("viajes");
         let promise = testCol.insertOne(item);
-        promise.then(res => resolve(res));
+        promise.then(() => {
+          client.close();
+          resolve(res);
+        });
         promise.catch(err => reject(err));
-        client.close();
       });
     });
   };
@@ -100,6 +104,7 @@ const MyMongoLib = function() {
             viaje: o_id
           });
           resolve(res);
+          client.close();
         });
         promise.catch(err => reject(err));
         client.close();
@@ -121,9 +126,11 @@ const MyMongoLib = function() {
           { _id: o_id },
           { $set: { estado: "esperando" } }
         );
-        promise.then(res => resolve(res));
+        promise.then(() => {
+          client.close();
+          resolve(res);
+        });
         promise.catch(err => reject(err));
-        client.close();
       });
     });
   };
@@ -142,9 +149,11 @@ const MyMongoLib = function() {
           { _id: o_id },
           { $set: { estado: "en curso" } }
         );
-        promise.then(res => resolve(res));
+        promise.then(() => {
+          client.close();
+          resolve(res);
+        });
         promise.catch(err => reject(err));
-        client.close();
       });
     });
   };
@@ -169,6 +178,7 @@ const MyMongoLib = function() {
             { viaje: o_id, conductor: conductor, estado: "aceptado" },
             { $set: { estado: "terminado" } }
           );
+          client.close();
           resolve(res);
         });
         promise.catch(err => reject(err));
@@ -197,6 +207,7 @@ const MyMongoLib = function() {
             { viaje: o_id, conductor: conductor },
             { $set: { estado: "cancelado" } }
           );
+          client.close();
           resolve(res);
         });
         promise.catch(err => reject(err));
@@ -220,8 +231,10 @@ const MyMongoLib = function() {
         return testCol
           .find({ conductor: conductor })
           .toArray()
-          .then(resolve);
-        client.close();
+          .then(() => {
+            client.close();
+            resolve();
+          });
       });
     });
   };
@@ -277,8 +290,10 @@ const MyMongoLib = function() {
         }
         const db = client.db(dbName);
         const testCol = db.collection("usuarios");
-        return testCol.findOne({ usuario: user.usuario }).then(resolve);
-        client.close();
+        return testCol.findOne({ usuario: user.usuario }).then(() => {
+          client.close();
+          resolve();
+        });
       });
     });
 
