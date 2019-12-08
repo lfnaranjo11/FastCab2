@@ -44,7 +44,6 @@ const MyMongoLib = function() {
       if (err !== null) {
         throw err;
       }
-      console.log("Connected correctly to server");
       const db = client.db(dbName);
       console.log("listening to changens on mongo");
 
