@@ -21,7 +21,7 @@ class GoogleMapTrack extends Component {
         map.panTo({ lat: this.state.lat, lng: this.state.lon });
       });
 
-      navigator.geolocation.watchPosition(
+      let id = navigator.geolocation.watchPosition(
         pos => {
           let lat = pos.coords.latitude;
           let lon = pos.coords.longitude;
@@ -39,6 +39,7 @@ class GoogleMapTrack extends Component {
           enableHighAccuracy: true
         }
       );
+      this.props.setId(id);
     }
   }
 

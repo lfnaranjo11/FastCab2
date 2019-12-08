@@ -5,6 +5,8 @@ import "./ListaViajes.css";
 
 function ListaViajes(props) {
   const [viajesNuevos, setViajesNuevos] = useState([]);
+  const [id, setId] = useState(0);
+
   useEffect(() => {
     const ws = new WebSocket("wss://taxis-whatsapp.herokuapp.com");
 
@@ -50,6 +52,9 @@ function ListaViajes(props) {
       .then(res => {})
       .catch(error => console.log("Error:", error));
     viaje.estado = "confirmado";
+    console.log("se va a desuscribir", id);
+
+    navigator.geolocation.clearWatch(id);
     props.history.push({
       pathname: "/servicio",
       viaje: viaje,
@@ -58,12 +63,21 @@ function ListaViajes(props) {
     });
   };
 
+  let unsuscribe = id => {
+    console.log("ID", id);
+    setId(id);
+  };
+
   return (
     <React.Fragment>
       <div role="navigation">
         <NavBar history={props.history} location={props.location} />
       </div>
-      <GoogleMapTrack history={props.history} location={props.location} />
+      <GoogleMapTrack
+        history={props.history}
+        location={props.location}
+        setId={unsuscribe}
+      />
       <h1 className="tituloLista">Nuevas Solicitudes</h1>
       <div className="container" role="main">
         {viajesNuevos.map(viaje => (
