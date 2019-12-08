@@ -17,17 +17,17 @@ router.post("/newmessage", (req, res) => {
     palabras[1] === "en" &&
     palabras[2]
   ) {
-    let direccion = newMessage.split("Recogerme en ")[1];
+    let direccion = palabras[2];
+    let direccion2 = palabras[2];
 
     for (i = 3; i < palabras.length; i++) {
       direccion = direccion + " " + palabras[i];
+      direccion2 = direccion + "%20" + palabras[i];
     }
     clientesEnEspera[usuario] = {
       timestamp: new Date().getMilliseconds(),
       direccion: direccion
     };
-
-    let direccion2 = direccion.replace(" ", "%20");
 
     myWaLib.respondToMessage(
       `¿La dirección en la que quieres que te recojan es *${direccion}*?
