@@ -114,6 +114,7 @@ class DetalleServicio extends Component {
             lon={-74.03693240000001}
             direccion={this.state.viaje.direccion}
             conductor={this.props.location.conductor}
+            token={this.props.location.token}
           />
 
           <a

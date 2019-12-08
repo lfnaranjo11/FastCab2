@@ -74,7 +74,7 @@ class SimpleMap extends Component {
       }),
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + this.props.location.token
+        Authorization: "Bearer " + this.props.token
       }
     })
       .then(res => {})
