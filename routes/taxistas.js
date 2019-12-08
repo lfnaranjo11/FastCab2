@@ -17,7 +17,13 @@ Nombre: ${conductor.usuario}
 Numero: ${conductor.numero}
 Placa del carro: ${conductor.placa}
 Modelo del carro: ${conductor.modelo}
-Marca del carro: ${conductor.marca}`,
+Marca del carro: ${conductor.marca}
+
+*Para comunicarte con el conductor usa este link:*
+https://wa.me/57${conductor.numero}?text=Hola%20soy%20el%20usuario
+
+*Para ver donde va tu conductor usa este link:*
+https://wheres-my-taxi.herokuapp.com/?conductor=${conductor.id}`,
     viaje.numero
   );
   myMongoLib

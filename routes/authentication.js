@@ -76,6 +76,7 @@ router.post("/login", (req, res) => {
           }
           let token = generateToken(userRecord);
           let usuarioSimple = {
+            id: userRecord._id,
             usuario: userRecord.usuario,
             numero: userRecord.numero,
             placa: userRecord.placa,
