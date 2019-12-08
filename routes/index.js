@@ -11,6 +11,7 @@ router.get("/", function(req, res, next) {
 
 router.get("/data", jwt({ secret: process.env.SECRET }), (req, res) => {
   let user = req.user.data;
+
   myMongoLib
     .getDocs()
     .then(docs => {
