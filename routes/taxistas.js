@@ -69,7 +69,7 @@ https://pick-me-here.herokuapp.com/?direccion=${direccion2}`,
         `*¡Bienvenido a FastCab!*
 
 Para pedir un taxi porfavor escribe:
-*Recogerme en* seguido de tu dirección ${usuario}`,
+*Recogerme en* seguido de tu a ${usuario} dirección`,
         res
       );
     }
