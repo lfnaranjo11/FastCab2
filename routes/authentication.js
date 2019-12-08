@@ -78,10 +78,9 @@ router.post("/login", (req, res) => {
           let usuarioSimple = {
             usuario: userRecord.usuario,
             numero: userRecord.numero,
-            cedula: userRecord.cedula,
             placa: userRecord.placa,
             modelo: userRecord.modelo,
-            foto: userRecord.foto
+            marca: userRecord.marca
           };
           res.send({ token: token, usuario: usuarioSimple });
         })

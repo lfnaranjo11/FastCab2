@@ -35,8 +35,8 @@ const MyMongoLib = function() {
           .find({ estado: "en espera" })
           .toArray()
           .then(resolve);
-        client.close();
       });
+      client.close();
     });
 
   exports.listenToChanges = cbk => {
@@ -221,8 +221,8 @@ const MyMongoLib = function() {
           .find({ conductor: conductor })
           .toArray()
           .then(resolve);
-        client.close();
       });
+      client.close();
     });
   };
   // Users --------------------------------------------------
@@ -278,8 +278,8 @@ const MyMongoLib = function() {
         const db = client.db(dbName);
         const testCol = db.collection("usuarios");
         return testCol.findOne({ usuario: user.usuario }).then(resolve);
-        client.close();
       });
+      client.close();
     });
 
   return exports;
