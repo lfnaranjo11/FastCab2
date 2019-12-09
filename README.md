@@ -7,7 +7,8 @@ https://taxis-whatsapp.herokuapp.com/
  
  
 # FastCab
-A webpage to make transportaiton easier than ever.
+A webpage to make transportation easier than ever.
+
 
 
 **project objectives**
@@ -107,10 +108,16 @@ heroku config:set MONGODB_URI= WHATEVER_IS_THE_URI_OF_YOUR_MONGO_REPOSITORY
 
 **Useful links**
 
+**Auxilary repostories**
+
+This project works better and will redirect to pages deployed in the next repositories
+
+ https://github.com/mateodevia/wheresMyTaxi
+ https://github.com/mateodevia/AdressLocationMap
 
 
 **remote server**
-https://taxis-whatsapp.herokuapp.com/servicio
+https://taxis-whatsapp.herokuapp.com/
 **presentation of the project**
 
 
