@@ -52,6 +52,7 @@ function ListaViajes(props) {
       .then(res => {})
       .catch(error => console.log("Error:", error));
     viaje.estado = "confirmado";
+    //quitar console.log
     console.log("se va a desuscribir", id);
     navigator.geolocation.clearWatch(id);
     props.history.push({
