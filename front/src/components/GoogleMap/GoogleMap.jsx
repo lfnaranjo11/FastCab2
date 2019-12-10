@@ -94,6 +94,7 @@ class SimpleMap extends Component {
         alt="lo que sea"
       >
         <GoogleMapReact
+          //OJO CON EL API KEY!!!!!! 
           bootstrapURLKeys={{ key: "AIzaSyBQGovuMsVwP-HAiTWrNAVND5JfnikoPZ8" }}
           defaultCenter={{ lat: this.props.lat, lng: this.props.lon }}
           defaultZoom={15}
