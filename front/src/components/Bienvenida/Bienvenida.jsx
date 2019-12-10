@@ -3,6 +3,7 @@ import "./Bienvenida.css";
 import Logo from "./logo.svg";
 
 function Bienvenida(props) {
+  /*Sergio Naranjo Aunque esta solución funciona le podría sugerir usar react router para el trabajo de las rutas*/
   let handleIniciarSesion = () => {
     props.history.push({
       pathname: "/iniciarsesion"
