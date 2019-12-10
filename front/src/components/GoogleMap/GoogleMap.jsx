@@ -94,6 +94,7 @@ class SimpleMap extends Component {
         alt="lo que sea"
       >
         <GoogleMapReact
+          /*Sergio Naranjo: este key podían guardarlo en la logica como variable de entorno y pedirlo en el front así no corren riesgos de seguridad */
           bootstrapURLKeys={{ key: "AIzaSyBQGovuMsVwP-HAiTWrNAVND5JfnikoPZ8" }}
           defaultCenter={{ lat: this.props.lat, lng: this.props.lon }}
           defaultZoom={15}
