@@ -21,7 +21,7 @@ class MiPerfil extends Component {
       token: this.props.location.token
     });
   };
-
+  //quitar hardcode del numero
   render() {
     return (
       <div>
