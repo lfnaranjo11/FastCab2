@@ -2,6 +2,7 @@ import React from "react";
 import "./CrearCuenta.css";
 
 function CrearCuenta(props) {
+  //no seria mejor hacer un componente controlado desde el state?
   let nombre = "";
   let numero = "";
   let cedula = "";
