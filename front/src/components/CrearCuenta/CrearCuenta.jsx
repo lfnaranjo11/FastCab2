@@ -31,6 +31,7 @@ function CrearCuenta(props) {
       .then(res => {
         res.json().then(data => {
           props.history.push({
+            /*Sergio Naranjo: El routing se puede hacer de una manera más sencilla si se hace con react router*/
             pathname: "/viajes",
             conductor: data.usuario,
             token: data.token
@@ -39,6 +40,8 @@ function CrearCuenta(props) {
       })
       .catch(error => console.log("Error:", error));
   };
+  
+  /*Sergio Naranjo: El routing se puede hacer de una manera más sencilla si se hace con react router*/
   let handleRegresar = () => {
     props.history.goBack();
   };
